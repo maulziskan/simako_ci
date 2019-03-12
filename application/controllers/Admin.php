@@ -29,6 +29,19 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/kelas_input');
 	}
 
+	public function kelas_aksi(){
+		$id_kelas=$this->input->post('id_kelas');
+		$nama_kelas=$this->input->post('nama_kelas');
+		$jenjang=$this->input->post('jenjang');
+
+		$data = array('id_kelas' => $id_kelas,
+						'nama_kelas' => $nama_kelas,
+						'jenjang' => $jenjang
+			);
+		$this->Model_kelas->simpan_kelas('ms_kelas',$data);
+		redirect('Admin/kelas_ms');
+	}
+
 	public function logout() {
 		$this->session->unset_userdata('nama_user');
 		$this->session->unset_userdata('posisi');

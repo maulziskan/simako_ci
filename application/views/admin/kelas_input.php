@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Kelas</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="<?php echo base_url("Admin/"); ?>kelas_aksi">
+				<form method="post" action="<?php echo base_url("Admin/kelas_aksi"); ?>">
 					<div class="form-group">
 						<label>Kelas</label>
 						<input type="text" class="form-control" name="id_kelas" placeholder="Masukkan Kelas" required>

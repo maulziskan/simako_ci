@@ -46,10 +46,10 @@ ini_set('display_errors', 1);
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="glyphicon glyphicon-user"></i> Data Master <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?php echo base_url("Admin/"); ?>siswa_ms">Master Siswa</a></li>
                   <li><a href="<?php echo base_url("Admin/"); ?>kelas_ms">Master Kelas</a></li>
                   <li><a href="<?php echo base_url("Admin/"); ?>mapel_ms">Master Mata Pelajaran</a></li>
                   <li><a href="<?php echo base_url("Admin/"); ?>walimurid_ms">Master Wali Murid</a></li>
+                  <li><a href="<?php echo base_url("Admin/"); ?>siswa_ms">Master Siswa</a></li>
               </ul>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button
             aria-haspopup="true" aria-expanded="false">

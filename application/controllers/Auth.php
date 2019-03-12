@@ -10,8 +10,8 @@ class Auth extends CI_Controller {
 		$data = array('nama_user' => $this->input->post('nama_user', TRUE),
 						'password' => md5($this->input->post('password', TRUE))
 			);
-		$this->load->model('model_user'); // load model_user
-		$hasil = $this->model_user->cek_user($data);
+		$this->load->model('Model_user'); // load model_user
+		$hasil = $this->Model_user->cek_user($data);
 		if ($hasil->num_rows() == 1) {
 			foreach ($hasil->result() as $sess) {
 				$sess_data['logged_in'] = 'Sudah Loggin';

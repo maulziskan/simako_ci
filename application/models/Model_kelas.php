@@ -3,8 +3,16 @@
 	class Model_kelas extends CI_Model {
 
 		public function ambil_kelas() {
-			$query = $this->db->get('ms_kelas');
-			return $query;
+			return $this->db->get('ms_kelas');
+			
+		}
+
+		public function ambil_kelasid(){
+			return $this->db->get_where('ms_kelas','id_kelas');
+		}
+
+		public function simpan_kelas($table,$data){
+			$this->db->insert($table,$data);
 		}
 
 	}

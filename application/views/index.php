@@ -39,7 +39,7 @@ if ($this->session->userdata("posisi") == "admin") {
 }
        ?>
 
-			<?php echo form_open("auth/cek_login"); ?>
+			<?php echo form_open("Auth/cek_login"); ?>
 				<div class="panel">
 					<br/>
 					<div class="panel-body">
