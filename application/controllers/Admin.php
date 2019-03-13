@@ -42,6 +42,36 @@ class Admin extends CI_Controller {
 		redirect('Admin/kelas_ms');
 	}
 
+	public function kelas_edit($id_kelas){
+		$where = array('id_kelas' => $id_kelas);
+		$data['ms_kelas'] = $this->Model_kelas->edit_kelas($where,'ms_kelas')->result();
+		$this->load->view('admin/kelas_edit',$data);
+	}
+
+	public function kelas_update(){
+		$id_kelas = $this->input->post('id_kelas');
+		$nama_kelas = $this->input->post('nama_kelas');
+		$jenjang = $this->input->post('jenjang');
+	
+		$data = array(
+			'nama_kelas' => $nama_kelas,
+			'jenjang' => $jenjang
+		);
+	
+		$where = array(
+			'id_kelas' => $id_kelas
+		);
+	
+		$this->Model_kelas->update_kelas($where,$data,'ms_kelas');
+		redirect('Admin/kelas_ms');
+	}
+
+	public function kelas_hapus($id_kelas){
+		$where = array('id_kelas' => $id_kelas);
+		$this->Model_kelas->hapus_kelas($where,'ms_kelas');
+		redirect('Admin/kelas_ms');
+	}
+
 	public function logout() {
 		$this->session->unset_userdata('nama_user');
 		$this->session->unset_userdata('posisi');
