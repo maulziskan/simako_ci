@@ -21,21 +21,18 @@ include 'header.php';
 				</tr>
 
 				<?php
-				include '../koneksi.php';
-
-				$data=mysqli_query($koneksi,"select * from ms_mapel");
-
+			
 				$no=1;
 
-				while ($d=mysqli_fetch_array($data)) {
+				foreach ($data_mapel->result() as $key => $value) {
 					?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $d['id_mapel']; ?></td>
-						<td><?php echo $d['nama_mapel']; ?></td>
-						<td><?php echo $d['jenjang']; ?></td>
-						<td><a href="mapel_edit.php?id=<?php echo $d['id_mapel']; ?>" class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-							<a href="mapel_hapus.php?id=<?php echo $d['id_mapel']; ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
+						<td><?php echo $value['id_mapel']; ?></td>
+						<td><?php echo $value['nama_mapel']; ?></td>
+						<td><?php echo $value['jenjang']; ?></td>
+						<td><a href="mapel_edit.php?id=<?php echo $value['id_mapel']; ?>" class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+							<a href="mapel_hapus.php?id=<?php echo $value['id_mapel']; ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
 					</tr>
 					<?php

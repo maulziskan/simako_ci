@@ -5,6 +5,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Model_siswa");
 		$this->load->model("Model_kelas");
+		$this->load->model("Model_mapel");
 		if ($this->session->userdata('nama_user')=="") {
 			redirect('auth');
 		}
@@ -71,6 +72,59 @@ class Admin extends CI_Controller {
 		$this->Model_kelas->hapus_kelas($where,'ms_kelas');
 		redirect('Admin/kelas_ms');
 	}
+
+	public function mapel_ms(){
+		$data['data_mapel']= $this->Model_mapel->ambil_mapel();
+		$this->load->view('admin/mapel_ms',$data);
+	}
+
+	public function mapel_input(){
+		$this->load->view('admin/mapel_input');
+	}
+
+	public function mapel_aksi(){
+		$id_mapel=$this->input->post('id_mapel');
+		$nama_mapel=$this->input->post('nama_mapel');
+		$jenjang=$this->input->post('jenjang');
+
+		$data = array('id_mapel' => $id_mapel,
+						'nama_mapel' => $nama_mapel,
+						'jenjang' => $jenjang
+			);
+		$this->Model_mapel->simpan_mapel('ms_mapel',$data);
+		redirect('Admin/mapel_ms');
+	}
+
+	public function mapel_edit($id_mapel){
+		$where = array('id_mapel' => $id_mapel);
+		$data['ms_mapel'] = $this->Model_mapel->edit_mapel($where,'ms_mapel')->result();
+		$this->load->view('admin/mapel_edit',$data);
+	}
+
+	public function mapel_update(){
+		$id_mapel = $this->input->post('id_mapel');
+		$nama_mapel = $this->input->post('nama_mapel');
+		$jenjang = $this->input->post('jenjang');
+	
+		$data = array(
+			'nama_mapel' => $nama_mapel,
+			'jenjang' => $jenjang
+		);
+	
+		$where = array(
+			'id_mapel' => $id_mapel
+		);
+	
+		$this->Model_mapel->update_mapel($where,$data,'ms_mapel');
+		redirect('Admin/mapel_ms');
+	}
+
+	public function mapel_hapus($id_mapel){
+		$where = array('id_mapel' => $id_mapel);
+		$this->Model_mapel->hapus_mapel($where,'ms_mapel');
+		redirect('Admin/mapel_ms');
+	}
+
 
 	public function logout() {
 		$this->session->unset_userdata('nama_user');
