@@ -8,7 +8,7 @@ include 'header.php';
 			<h4>Data Master Wali Murid</h4>
 		</div>
 		<div class="panel-body">
-			<a href="walimurid_input.php" class="btn btn-sm btn-info pull-right">Tambah</a>
+			<a href="<?php echo base_url("Admin/walimurid_input"); ?>" class="btn btn-sm btn-info pull-right">Tambah</a>
 			<br/>
 			<br/>
 			<table class="table table-bordered table-stripped table-hover">
@@ -22,22 +22,20 @@ include 'header.php';
 				</tr>
 
 				<?php
-				include '../koneksi.php';
-
-				$data=mysqli_query($koneksi,"select * from ms_walimurid");
-
+				
 				$no=1;
 
-				while ($d=mysqli_fetch_array($data)) {
+				foreach ($data_walimurid->result() as $key => $value)  {
 					?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $d['id_walimurid']; ?></td>
-						<td><?php echo $d['nama_walimurid']; ?></td>
-						<td><?php echo $d['alamat_walimurid']; ?></td>
-						<td><?php echo $d['no_hp']; ?></td>
-						<td><a href="walimurid_edit.php?id=<?php echo $d['id_walimurid']; ?>" class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-							<a href="walimurid_hapus.php?id=<?php echo $d['id_walimurid']; ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
+						<td><?php echo $value->id_walimurid; ?></td>
+						<td><?php echo $value->nama_walimurid; ?></td>
+						<td><?php echo $value->alamat_walimurid; ?></td>
+						<td><?php echo $value->no_hp; ?></td>
+						<td>
+							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_walimurid; ?>" href="<?= base_url('Admin/walimurid_edit/'.$value->id_walimurid); ?>"><span class="glyphicon glyphicon-edit"></span></a>
+							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_walimurid; ?>" href="<?= base_url('Admin/walimurid_hapus/'.$value->id_walimurid); ?>"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
 					</tr>
 					<?php

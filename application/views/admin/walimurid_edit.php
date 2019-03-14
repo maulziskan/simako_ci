@@ -13,46 +13,40 @@ include 'header.php';
 			</div>
 		<div class="panel-body">
 		<?php
-		include '../koneksi.php';
-
-		    $id=$_GET['id'];
-
-		    $data=mysqli_query($koneksi,"select * from ms_walimurid where id_walimurid='$id'");
-
-		    while ($d=mysqli_fetch_array($data)) {
-		    	?>
-		    	<form method="post" action="walimurid_update.php">
+		foreach($ms_walimurid as $k){ 
+			?>
+		    	<form method="post" action="<?php echo base_url("Admin/walimurid_update"); ?>">
 		    		<div class="form-group">
 		    			<label>Kode Wali Murid</label>
-		    			<input type="text" name="id" class="form-control" value="<?php echo $d['id_walimurid']; ?>" readonly>
+		    			<input type="text" name="id_walimurid" class="form-control" value="<?php echo $k->id_walimurid; ?>" readonly>
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Nama wali Murid</label>
-		    			<input type="text" class="form-control" name="nama_walimurid" value="<?php echo $d['nama_walimurid']; ?> ">
+		    			<input type="text" class="form-control" name="nama_walimurid" value="<?php echo $k->nama_walimurid; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Alamat wali Murid</label>
-		    			<input type="text" class="form-control" name="alamat_walimurid" value="<?php echo $d['alamat_walimurid']; ?> ">
+		    			<input type="text" class="form-control" name="alamat_walimurid" value="<?php echo $k->alamat_walimurid; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Hubungan Kerabat dengan Siswa</label>
-		    			<input type="text" class="form-control" name="hubungan_kerabat" value="<?php echo $d['hubungan_kerabat']; ?> ">
+		    			<input type="text" class="form-control" name="hubungan_kerabat" value="<?php echo $k->hubungan_kerabat; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>No. Telepon Rumah</label>
-		    			<input type="text" name='no_telp' class="form-control" value="<?php echo $d['no_telp']; ?>">
+		    			<input type="text" name='no_telp' class="form-control" value="<?php echo $k->no_telp; ?>">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>No. Handphone</label>
-		    			<input type="text" name='no_hp' class="form-control" value="<?php echo $d['no_hp']; ?>">
+		    			<input type="text" name='no_hp' class="form-control" value="<?php echo $k->no_hp; ?>">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Alamat Email</label>
-		    			<input type="email" class="form-control" name="email_walimurid" value="<?php echo $d['email_walimurid']; ?> ">
+		    			<input type="email" class="form-control" name="email_walimurid" value="<?php echo $k->email_walimurid; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Pekerjaan</label>
-		    			<input type="text" class="form-control" name="pekerjaan" value="<?php echo $d['pekerjaan']; ?> ">
+		    			<input type="text" class="form-control" name="pekerjaan" value="<?php echo $k->pekerjaan; ?> ">
 		    		</div>
 		    		<br/>
 		    		<input type="submit" class="btn btn-primary" value="Simpan">

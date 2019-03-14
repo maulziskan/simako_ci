@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Karyawan</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="karyawan_aksi.php">
+				<form method="post" action="<?php echo base_url("Admin/karyawan_aksi");?>">
 					<div class="form-group">
 						<label>Kode Karyawan</label>
 						<input type="text" class="form-control" maxlength="4" name="id_karyawan" placeholder="Masukkan Kode Karyawan" required>
@@ -46,7 +46,7 @@ include 'header.php';
 					</div>
 					<div class="form-group">
 						<label>Foto Karyawan</label>
-						<input type="text" class="form-control" name="foto_karyawan" placeholder="Masukkan Foto Karyawan">
+						<input type="file" class="form-control" name="foto_karyawan" placeholder="Masukkan Foto Karyawan">
 					</div>
 					<div class="form-group">
 						<label>Agama</label>

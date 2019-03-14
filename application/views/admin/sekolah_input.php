@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Sekolah</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="sekolah_aksi.php">
+				<form method="post" action="<?php echo base_url("Admin/sekolah_aksi");?>">
 					<div class="form-group">
 						<label>Kode Sekolah</label>
 						<input type="text" class="form-control" maxlength="4" name="id_sekolah" placeholder="Masukkan Kode Sekolah" required>

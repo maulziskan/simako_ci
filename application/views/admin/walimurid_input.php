@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Wali Murid</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="walimurid_aksi.php">
+				<form method="post" action="<?php echo base_url("Admin/walimurid_aksi");?>">
 					<div class="form-group">
 						<label>Kode Wali Murid</label>
 						<input type="text" class="form-control" maxlength="4" name="id_walimurid" placeholder="Masukkan Kode Wali Murid" required>

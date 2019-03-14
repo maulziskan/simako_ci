@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Mata Pelajaran</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="mapel_aksi.php">
+				<form method="post" action="<?php echo base_url("Admin/mapel_aksi");?>">
 					<div class="form-group">
 						<label>Kode Mata Pelajaran</label>
 						<input type="text" class="form-control" maxlength="4" name="id_mapel" placeholder="Masukkan Kode Mata Pelajaran" required>

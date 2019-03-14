@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Guru</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="guru_aksi.php">
+				<form method="post" action="<?php echo base_url("Admin/guru_aksi");?>">
 					<div class="form-group">
 						<label>Kode Guru</label>
 						<input type="text" class="form-control" maxlength="4" name="id_guru" placeholder="Masukkan Kode Guru" required>
@@ -38,19 +38,8 @@ include 'header.php';
 					</div>
 					<div class="form-group">
 						<label>Kode Karyawan</label>
-						<select name="id_karyawan" class="form-control">
-							<option value="" selected="selected">-</option>
-							<?php
-							include "koneksi.php";
-
-							$query=mysqli_query($koneksi,"select * from ms_karyawan");
-
-							while ($data=mysqli_fetch_array($query)){
-								echo "<option value='".$data['id_karyawan']."'>".$data['id_karyawan']." - ".$data['nama_karyawan']."</option>";
-							}
-							?>
-							</select>
-					</div>
+						<input type="text" class="form-control" name="id_karyawan" placeholder="Masukkan Kode Karyawan">
+		    		</div>
 					<div class="form-group">
 						<label>Pendidikan Terakhir</label>
 						<input type="text" class="form-control" name="jenjang_pendidikan" placeholder="Masukkan Pendidikan Terakhir">

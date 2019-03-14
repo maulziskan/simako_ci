@@ -8,7 +8,7 @@ include 'header.php';
 			<h4>Data Master Mata Pelajaran</h4>
 		</div>
 		<div class="panel-body">
-			<a href="mapel_input.php" class="btn btn-sm btn-info pull-right">Tambah</a>
+			<a href="<?php echo base_url("Admin/"); ?>mapel_input" class="btn btn-sm btn-info pull-right">Tambah</a>
 			<br/>
 			<br/>
 			<table class="table table-bordered table-stripped table-hover">
@@ -28,11 +28,12 @@ include 'header.php';
 					?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $value['id_mapel']; ?></td>
-						<td><?php echo $value['nama_mapel']; ?></td>
-						<td><?php echo $value['jenjang']; ?></td>
-						<td><a href="mapel_edit.php?id=<?php echo $value['id_mapel']; ?>" class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-							<a href="mapel_hapus.php?id=<?php echo $value['id_mapel']; ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
+						<td><?php echo $value->id_mapel; ?></td>
+						<td><?php echo $value->nama_mapel; ?></td>
+						<td><?php echo $value->jenjang; ?></td>
+						<td>
+							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_mapel; ?>" href="<?= base_url('Admin/mapel_edit/'.$value->id_mapel); ?>"><span class="glyphicon glyphicon-edit"></span></a>
+							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_mapel; ?>" href="<?= base_url('Admin/mapel_hapus/'.$value->id_mapel); ?>"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
 					</tr>
 					<?php

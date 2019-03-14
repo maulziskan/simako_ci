@@ -8,7 +8,7 @@ include 'header.php';
 			<h4>Data Master Guru</h4>
 		</div>
 		<div class="panel-body">
-			<a href="guru_input.php" class="btn btn-sm btn-info pull-right">Tambah</a>
+			<a href="<?php echo base_url("Admin/guru_input");?>" class="btn btn-sm btn-info pull-right">Tambah</a>
 			<br/>
 			<br/>
 			<table class="table table-bordered table-stripped table-hover">
@@ -22,22 +22,20 @@ include 'header.php';
 				</tr>
 
 				<?php
-				include '../koneksi.php';
-
-				$data=mysqli_query($koneksi,"select * from ms_guru");
-
 				$no=1;
 
-				while ($d=mysqli_fetch_array($data)) {
-					?>
+				foreach ($data_guru->result() as $key => $value) {
+				?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $d['id_guru']; ?></td>
-						<td><?php echo $d['nama_guru']; ?></td>
-						<td><?php echo $d['alamat_guru']; ?></td>
-						<td><?php echo $d['no_hp']; ?></td>
-						<td><a href="guru_edit.php?id=<?php echo $d['id_guru']; ?>" class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-							<a href="guru_hapus.php?id=<?php echo $d['id_guru']; ?>" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Hapus"><span class="glyphicon glyphicon-trash"></span></a>
+						<td><?php echo $value->id_guru; ?></td>
+						<td><?php echo $value->nama_guru; ?></td>
+						<td><?php echo $value->alamat_guru; ?></td>
+						<td><?php echo $value->no_hp; ?></td>
+						<td>
+							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_guru; ?>" href="<?= base_url('Admin/guru_edit/'.$value->id_guru); ?>"><span class="glyphicon glyphicon-edit"></span></a>
+							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_guru; ?>" href="<?= base_url('Admin/guru_hapus/'.$value->id_guru); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+					
 						</td>
 					</tr>
 					<?php

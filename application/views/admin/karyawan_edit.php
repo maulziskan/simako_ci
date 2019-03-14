@@ -13,54 +13,48 @@ include 'header.php';
 			</div>
 		<div class="panel-body">
 		<?php
-		include '../koneksi.php';
-
-		    $id=$_GET['id'];
-
-		    $data=mysqli_query($koneksi,"select * from ms_karyawan where id_karyawan='$id'");
-
-		    while ($d=mysqli_fetch_array($data)) {
+		foreach($ms_kelas as $k){
 		    	?>
-		    	<form method="post" action="karyawan_update.php">
+		    	<form method="post" action="<?php echo base_url("Admin/karyawan_update");?>">
 		    		<div class="form-group">
 		    			<label>Kode Karyawan</label>
-		    			<input type="text" name="id" class="form-control" value="<?php echo $d['id_karyawan']; ?>" readonly>
+		    			<input type="text" name="id" class="form-control" value="<?php echo $k->id_karyawan; ?>" readonly>
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Nama Karyawan</label>
-		    			<input type="text" class="form-control" name="nama_karyawan" value="<?php echo $d['nama_karyawan']; ?> ">
+		    			<input type="text" class="form-control" name="nama_karyawan" value="<?php echo $k->nama_karyawan; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Alamat Karyawan</label>
-		    			<input type="text" class="form-control" name="alamat_karyawan" value="<?php echo $d['alamat_karyawan']; ?> ">
+		    			<input type="text" class="form-control" name="alamat_karyawan" value="<?php echo $k->alamat_karyawan; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>No. Telepon Rumah</label>
-		    			<input type="text" name='no_telp' class="form-control" value="<?php echo $d['no_telp']; ?>">
+		    			<input type="text" name='no_telp' class="form-control" value="<?php echo $k->no_telp; ?>">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>No. Handphone</label>
-		    			<input type="text" name='no_hp' class="form-control" value="<?php echo $d['no_hp']; ?>">
+		    			<input type="text" name='no_hp' class="form-control" value="<?php echo $k->no_hp; ?>">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Alamat Email</label>
-		    			<input type="email" class="form-control" name="email_karyawan" value="<?php echo $d['email_karyawan']; ?> ">
+		    			<input type="email" class="form-control" name="email_karyawan" value="<?php echo $k->email_karyawan; ?> ">
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Status kerja</label>
-		    			<input type="text" class="form-control" name="status_kerja" value="<?php echo $d['status_kerja']; ?> ">
+		    			<input type="text" class="form-control" name="status_kerja" value="<?php echo $k->status_kerja; ?> ">
 		    		</div>
 				<div class="form-group">
 		    			<label>Jabatan</label>
-		    			<input type="text" class="form-control" name="jabatan" value="<?php echo $d['jabatan']; ?> ">
+		    			<input type="text" class="form-control" name="jabatan" value="<?php echo $k->jabatan; ?> ">
 		    		</div>
 				<div class="form-group">
 		    			<label>Foto Karyawan</label>
-		    			<input type="text" class="form-control" name="foto_karyawan" value="<?php echo $d['foto_karyawan']; ?> ">
+		    			<input type="text" class="form-control" name="foto_karyawan" value="<?php echo $k->foto_karyawan; ?> ">
 		    		</div>
 				<div class="form-group">
 		    			<label>Agama</label>
-		    			<input type="text" class="form-control" name="agama" value="<?php echo $d['agama']; ?> ">
+		    			<input type="text" class="form-control" name="agama" value="<?php echo $k->agama; ?> ">
 		    		</div>
 		    		<br/>
 		    		<input type="submit" class="btn btn-primary" value="Simpan">
