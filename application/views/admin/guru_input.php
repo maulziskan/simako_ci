@@ -45,7 +45,7 @@ include 'header.php';
 						<input type="text" class="form-control" name="jenjang_pendidikan" placeholder="Masukkan Pendidikan Terakhir">
 					</div>
 					<br/>
-
+					
 					<input type="submit" class="btn btn-primary" value="Simpan">
 				</form>
 			</div>
