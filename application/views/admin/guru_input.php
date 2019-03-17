@@ -38,7 +38,15 @@ include 'header.php';
 					</div>
 					<div class="form-group">
 						<label>Kode Karyawan</label>
-						<input type="text" class="form-control" name="id_karyawan" placeholder="Masukkan Kode Karyawan">
+						<select name="id_karyawan" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_karyawan as $k){
+								echo "<option value='".$k->id_karyawan."'>".$k->id_karyawan." - ".$k->nama_karyawan."</option>";
+							}
+							?>
+						</select>
+						
 		    		</div>
 					<div class="form-group">
 						<label>Pendidikan Terakhir</label>
@@ -52,6 +60,7 @@ include 'header.php';
 		</div>
 	</div>
 </div>
+
 
 <?php
 include 'footer.php';

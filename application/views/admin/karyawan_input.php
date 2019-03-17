@@ -11,7 +11,7 @@ include 'header.php';
 				<h4>Input Master Karyawan</h4>
 			</div>
 			<div class="panel-body">
-				<form method="post" action="<?php echo base_url("Admin/karyawan_aksi");?>">
+				<form method="post" action="<?php echo base_url("Admin/karyawan_aksi");?>" enctype='multipart/form-data' >
 					<div class="form-group">
 						<label>Kode Karyawan</label>
 						<input type="text" class="form-control" maxlength="4" name="id_karyawan" placeholder="Masukkan Kode Karyawan" required>
@@ -37,9 +37,13 @@ include 'header.php';
 						<input type="email" class="form-control" name="email_karyawan" placeholder="Masukkan Alamat email">
 					</div>
 					<div class="form-group">
-						<label>Status Kerja</label>
-						<input type="text" class="form-control" name="status_kerja" placeholder="Masukkan Status Kerja">
-					</div>
+						<label>Status Pekerjaan</label>
+						<select name="status_kerja" class="form-control">
+								<option value="Karyawan Tetap">Karyawan Tetap</option>
+  								<option value="Karyawan Kontrak">Karyawan Kontrak</option>
+  								<option value="Karyawan Alih Daya">Karyawan Alih Daya</option>
+  						</select>
+						</div>
 					<div class="form-group">
 						<label>Jabatan</label>
 						<input type="text" class="form-control" name="jabatan" placeholder="Masukkan Jabatan">

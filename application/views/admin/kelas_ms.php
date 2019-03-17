@@ -25,7 +25,7 @@ include 'header.php';
 
 				
 				$no=1;
-
+				
 				foreach ($data_kelas->result() as $key => $value) {
 					?>
 					<tr>

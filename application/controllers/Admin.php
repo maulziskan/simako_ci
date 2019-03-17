@@ -20,6 +20,7 @@ class Admin extends CI_Controller {
 	public function index() {
 		$data['nama_user'] = $this->session->userdata('nama_user');
 		$this->load->view('admin/index', $data);
+		
 	}
 
 	public function siswa_ms(){
@@ -56,6 +57,7 @@ class Admin extends CI_Controller {
 		$data['ms_kelas'] = $this->Model_kelas->edit_kelas($where,'ms_kelas')->result();
 		$this->load->view('admin/kelas_edit',$data);
 	}
+	
 
 	public function kelas_update(){
 		$id_kelas = $this->input->post('id_kelas');
@@ -217,10 +219,11 @@ public function karyawan_ms(){
 }
 
 public function karyawan_input(){
-	$this->load->view('admin/karyawan_input');
+	$this->load->view('admin/karyawan_input');	
 }
 
 public function karyawan_aksi(){
+	$foto_karyawan=$this->Model_karyawan->upload();
 	$id_karyawan=$this->input->post('id_karyawan');
 	$nama_karyawan=$this->input->post('nama_karyawan');
 	$alamat_karyawan=$this->input->post('alamat_karyawan');
@@ -229,7 +232,6 @@ public function karyawan_aksi(){
 	$email_karyawan=$this->input->post('email_karyawan');
 	$status_kerja=$this->input->post('status_kerja');
 	$jabatan=$this->input->post('jabatan');
-	$foto_karyawan=$this->input->post('status_kerja');
 	$agama=$this->input->post('agama');
 
 	$data = array(
@@ -241,7 +243,7 @@ public function karyawan_aksi(){
 		'email_karyawan' => $email_karyawan,
 		'status_kerja' => $status_kerja,
 		'jabatan' => $jabatan,
-		'foto_karyawan' => $foto_karyawan,
+		'foto_karyawan' => $foto_karyawan['file']['file_name'],
 		'agama' => $agama
 		);
 	$this->Model_karyawan->simpan_karyawan('ms_karyawan',$data);
@@ -255,6 +257,7 @@ public function karyawan_edit($id_karyawan){
 }
 
 public function karyawan_update(){
+	$foto_karyawan=$this->Model_karyawan->edit_upload();
 	$id_karyawan=$this->input->post('id_karyawan');
 	$nama_karyawan=$this->input->post('nama_karyawan');
 	$alamat_karyawan=$this->input->post('alamat_karyawan');
@@ -263,20 +266,35 @@ public function karyawan_update(){
 	$email_karyawan=$this->input->post('email_karyawan');
 	$status_kerja=$this->input->post('status_kerja');
 	$jabatan=$this->input->post('jabatan');
-	$foto_karyawan=$this->input->post('status_kerja');
 	$agama=$this->input->post('agama');
+	if($foto_karyawan['result']=='success'){
+		//
+		$data = array(
+			'nama_karyawan' => $nama_karyawan,
+			'alamat_karyawan' => $alamat_karyawan,
+			'no_telp' => $no_telp,
+			'no_hp' => $no_hp,
+			'email_karyawan' => $email_karyawan,
+			'status_kerja' => $status_kerja,
+			'jabatan' => $jabatan,
+			'foto_karyawan' => $foto_karyawan['file']['file_name'],
+			'agama' => $agama
+		);
+	}
+	else{
+		$data = array(
+			'nama_karyawan' => $nama_karyawan,
+			'alamat_karyawan' => $alamat_karyawan,
+			'no_telp' => $no_telp,
+			'no_hp' => $no_hp,
+			'email_karyawan' => $email_karyawan,
+			'status_kerja' => $status_kerja,
+			'jabatan' => $jabatan,
+			'agama' => $agama
+		);
+	}
 
-	$data = array(
-		'nama_karyawan' => $nama_karyawan,
-		'alamat_karyawan' => $alamat_karyawan,
-		'no_telp' => $no_telp,
-		'no_hp' => $no_hp,
-		'email_karyawan' => $email_karyawan,
-		'status_kerja' => $status_kerja,
-		'jabatan' => $jabatan,
-		'foto_karyawan' => $foto_karyawan,
-		'agama' => $agama
-	);
+	
 
 	$where = array(
 		'id_karyawan' => $id_karyawan
@@ -298,7 +316,8 @@ public function guru_ms(){
 }
 
 public function guru_input(){
-	$this->load->view('admin/guru_input');
+	$data['ms_karyawan'] = $this->Model_karyawan->ambil_karyawanid()->result();
+	$this->load->view('admin/guru_input',$data);
 }
 
 public function guru_aksi(){

@@ -13,12 +13,12 @@ include 'header.php';
 			</div>
 		<div class="panel-body">
 		<?php
-		foreach($ms_kelas as $k){
+		foreach($ms_karyawan as $k){
 		    	?>
-		    	<form method="post" action="<?php echo base_url("Admin/karyawan_update");?>">
+		    	<form method="post" action="<?php echo base_url("Admin/karyawan_update");?>" enctype='multipart/form-data'>
 		    		<div class="form-group">
 		    			<label>Kode Karyawan</label>
-		    			<input type="text" name="id" class="form-control" value="<?php echo $k->id_karyawan; ?>" readonly>
+		    			<input type="text" name="id_karyawan" class="form-control" value="<?php echo $k->id_karyawan; ?>" readonly>
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Nama Karyawan</label>
@@ -50,7 +50,7 @@ include 'header.php';
 		    		</div>
 				<div class="form-group">
 		    			<label>Foto Karyawan</label>
-		    			<input type="text" class="form-control" name="foto_karyawan" value="<?php echo $k->foto_karyawan; ?> ">
+		    			<input type="file" class="form-control" name="foto_karyawan" value="<?php echo $k->foto_karyawan; ?> ">
 		    		</div>
 				<div class="form-group">
 		    			<label>Agama</label>
