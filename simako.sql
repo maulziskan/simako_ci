@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 15, 2019 at 05:46 AM
+-- Generation Time: Mar 18, 2019 at 07:03 AM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.15-0ubuntu0.18.04.1
 
@@ -107,7 +107,8 @@ CREATE TABLE `ms_karyawan` (
 --
 
 INSERT INTO `ms_karyawan` (`id_karyawan`, `nama_karyawan`, `alamat_karyawan`, `no_telp`, `no_hp`, `email_karyawan`, `status_kerja`, `jabatan`, `foto_karyawan`, `agama`) VALUES
-('a', 'a', 'a', 'a', 'a', 'a@a', 'a', 'a', 'a', 'Islam');
+('a', 'b ', 'c ', 'd', 'e', 'f@f.com', 'Karyawan Tetap     ', 'g ', 'pii_jadul.jpg', 'Islam     '),
+('K001', 'Maulziskan    ', 'Jl. Pahlawan Kebon Jeruk       ', '021123', '08123456789', 'abc@abc.com', 'Karyawan Tetap       ', 'Guru       ', '2.jpg', 'Islam       ');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,6 @@ CREATE TABLE `ms_kelas` (
 --
 
 INSERT INTO `ms_kelas` (`id_kelas`, `nama_kelas`, `jenjang`) VALUES
-('a', 'b', 'c'),
 ('I', 'Kelas I (satu)', 'SD'),
 ('II', 'Kelas II (Dua)', 'SD');
 
