@@ -23,10 +23,110 @@ class Admin extends CI_Controller {
 		
 	}
 
-	public function siswa_ms(){
-		$data['data_siswa'] = $this->Model_siswa->ambil_siswa();
-		$this->load->view('admin/siswa_ms',$data);
+// Batas ------------------------------------------------
+public function siswa_ms(){
+	$data['data_siswa']= $this->Model_siswa->ambil_siswa();
+	$this->load->view('admin/siswa_ms',$data);
+}
+
+public function siswa_input(){
+	$this->load->view('admin/siswa_input');	
+}
+
+public function siswa_aksi(){
+	
+	$id_siswa=$this->input->post('id_siswa');
+	$nama_siswa=$this->input->post('nama_siswa');
+	$id_walimurid=$this->input->post('id_walimurid');
+	$id_sekolah=$this->input->post('id_sekolah');
+	$id_kelas=$this->input->post('id_kelas');
+	$jenis_kelamin=$this->input->post('jenis_kelamin');
+	$tempat_lahir=$this->input->post('tempat_lahir');
+	$tgl_lahir=$this->input->post('tgl_lahir');
+	$nisn=$this->input->post('nisn');
+	$nik=$this->input->post('nik');
+	$agama=$this->input->post('agama');
+	$asal_sekolah=$this->input->post('asal_sekolah');
+	$tgl_daftar=$this->input->post('tgl_daftar');
+	$kelas_daftar=$this->input->post('kelas_daftar');
+	$foto_siswa=$this->Model_siswa->upload();
+
+	$data = array(
+		'id_siswa' => $id_siswa,
+		'nama_siswa' => $nama_siswa,
+		'alamat_siswa' => $alamat_siswa,
+		'no_telp' => $no_telp,
+		'no_hp' => $no_hp,
+		'email_siswa' => $email_siswa,
+		'status_kerja' => $status_kerja,
+		'jabatan' => $jabatan,
+		'foto_siswa' => $foto_siswa['file']['file_name'],
+		'agama' => $agama
+		);
+	$this->Model_siswa->simpan_siswa('ms_siswa',$data);
+	redirect('Admin/siswa_ms');
+}
+
+public function siswa_edit($id_siswa){
+	$where = array('id_siswa' => $id_siswa);
+	$data['ms_siswa'] = $this->Model_siswa->edit_siswa($where,'ms_siswa')->result();
+	$this->load->view('admin/siswa_edit',$data);
+}
+
+public function siswa_update(){
+	$foto_siswa=$this->Model_siswa->edit_upload();
+	$id_siswa=$this->input->post('id_siswa');
+	$nama_siswa=$this->input->post('nama_siswa');
+	$alamat_siswa=$this->input->post('alamat_siswa');
+	$no_telp=$this->input->post('no_telp');
+	$no_hp=$this->input->post('no_hp');
+	$email_siswa=$this->input->post('email_siswa');
+	$status_kerja=$this->input->post('status_kerja');
+	$jabatan=$this->input->post('jabatan');
+	$agama=$this->input->post('agama');
+	if($foto_siswa['result']=='success'){
+		//
+		$data = array(
+			'nama_siswa' => $nama_siswa,
+			'alamat_siswa' => $alamat_siswa,
+			'no_telp' => $no_telp,
+			'no_hp' => $no_hp,
+			'email_siswa' => $email_siswa,
+			'status_kerja' => $status_kerja,
+			'jabatan' => $jabatan,
+			'foto_siswa' => $foto_siswa['file']['file_name'],
+			'agama' => $agama
+		);
 	}
+	else{
+		$data = array(
+			'nama_siswa' => $nama_siswa,
+			'alamat_siswa' => $alamat_siswa,
+			'no_telp' => $no_telp,
+			'no_hp' => $no_hp,
+			'email_siswa' => $email_siswa,
+			'status_kerja' => $status_kerja,
+			'jabatan' => $jabatan,
+			'agama' => $agama
+		);
+	}
+
+	
+
+	$where = array(
+		'id_siswa' => $id_siswa
+	);
+
+	$this->Model_siswa->update_siswa($where,$data,'ms_siswa');
+	redirect('Admin/siswa_ms');
+}
+
+public function siswa_hapus($id_siswa){
+	$where = array('id_siswa' => $id_siswa);
+	$this->Model_siswa->hapus_siswa($where,'ms_siswa');
+	redirect('Admin/siswa_ms');
+}
+	
 
 // Batas ------------------------------------------------
 

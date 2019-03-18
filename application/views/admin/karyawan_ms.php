@@ -18,6 +18,7 @@ include 'header.php';
 					<th>Nama Karyawan</th>
 					<th>Alamat</th>
 					<th>No.Handphone</th>
+					<th>Foto Karyawan</th>
 					<th width="10%"><center>Opsi</center></th>
 				</tr>
 
@@ -33,15 +34,15 @@ include 'header.php';
 						<td><?php echo $k->nama_karyawan; ?></td>
 						<td><?php echo $k->alamat_karyawan; ?></td>
 						<td><?php echo $k->no_hp; ?></td>
+						<td><?php echo "<img src='".base_url("./upload/karyawan/".$k->foto_karyawan)."' width='100' height='100'>";?></td>
 						<td>
 							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $k->id_karyawan; ?>" href="<?= base_url('Admin/karyawan_edit/'.$k->id_karyawan); ?>"><span class="glyphicon glyphicon-edit"></span></a>
 							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $k->id_karyawan; ?>" href="<?= base_url('Admin/karyawan_hapus/'.$k->id_karyawan); ?>"><span class="glyphicon glyphicon-trash"></span></a>
-					
 						</td>
 					</tr>
 					<?php
 				}
-				?>
+			?>
 			</table>
 		</div>
 	</div>
