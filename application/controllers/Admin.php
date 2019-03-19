@@ -30,7 +30,10 @@ public function siswa_ms(){
 }
 
 public function siswa_input(){
-	$this->load->view('admin/siswa_input');	
+	$data['ms_walimurid'] = $this->Model_walimurid->ambil_walimuridid()->result();
+	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
+	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
+	$this->load->view('admin/siswa_input',$data);	
 }
 
 public function siswa_aksi(){
@@ -54,14 +57,19 @@ public function siswa_aksi(){
 	$data = array(
 		'id_siswa' => $id_siswa,
 		'nama_siswa' => $nama_siswa,
-		'alamat_siswa' => $alamat_siswa,
-		'no_telp' => $no_telp,
-		'no_hp' => $no_hp,
-		'email_siswa' => $email_siswa,
-		'status_kerja' => $status_kerja,
-		'jabatan' => $jabatan,
-		'foto_siswa' => $foto_siswa['file']['file_name'],
-		'agama' => $agama
+		'id_walimurid' => $id_walimurid,
+		'id_sekolah' => $id_sekolah,
+		'id_kelas' => $id_kelas,
+		'jenis_kelamin' => $jenis_kelamin,
+		'tempat_lahir' => $tempat_lahir,
+		'tgl_lahir' => $tgl_lahir,
+		'nisn' => $nisn,
+		'nik' => $nik,
+		'agama' => $agama,
+		'asal_sekolah' => $asal_sekolah,
+		'tgl_daftar' => $tgl_daftar,
+		'kelas_daftar' => $kelas_daftar,
+		'foto_siswa' => $foto_siswa['file']['file_name']
 		);
 	$this->Model_siswa->simpan_siswa('ms_siswa',$data);
 	redirect('Admin/siswa_ms');
@@ -447,6 +455,7 @@ public function guru_aksi(){
 public function guru_edit($id_guru){
 	$where = array('id_guru' => $id_guru);
 	$data['ms_guru'] = $this->Model_guru->edit_guru($where,'ms_guru')->result();
+	$data['ms_karyawan'] = $this->Model_karyawan->ambil_karyawanid()->result();
 	$this->load->view('admin/guru_edit',$data);
 }
 

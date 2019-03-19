@@ -8,7 +8,8 @@
 		}
 
 		public function ambil_kelasid(){
-			return $this->db->get_where('ms_kelas','id_kelas');
+			$this->db->select('id_kelas , nama_kelas');
+			return $this->db->get('ms_kelas');
 		}
 
 		public function simpan_kelas($table,$data){

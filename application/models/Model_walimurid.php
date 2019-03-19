@@ -8,7 +8,8 @@
 		}
 
 		public function ambil_walimuridid(){
-			return $this->db->get_where('ms_walimurid','id_walimurid');
+			$this->db->select('id_walimurid , nama_walimurid');
+			return $this->db->get('ms_walimurid');
 		}
 
 		public function simpan_walimurid($table,$data){

@@ -8,7 +8,8 @@
 		}
 
 		public function ambil_sekolahid(){
-			return $this->db->get_where('ms_sekolah','id_sekolah');
+			$this->db->select('id_sekolah , nama_sekolah');
+			return $this->db->get('ms_sekolah');
 		}
 
 		public function simpan_sekolah($table,$data){

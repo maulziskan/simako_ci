@@ -13,7 +13,7 @@ include 'header.php';
 			</div>
 		<div class="panel-body">
 		<?php
-		foreach ($data_guru as $d) {
+		foreach ($ms_guru as $d) {
 		  	?>
 		    	<form method="post" action="<?php echo base_url("Admin/guru_update");?>">
 		    		<div class="form-group">
@@ -41,8 +41,19 @@ include 'header.php';
 		    			<input type="email" class="form-control" name="email_guru" value="<?php echo $d->email_guru; ?> ">
 		    		</div>
 		    		<div class="form-group">
-		    			<label>Kode Karyawan</label>
-		    			<input type="text" class="form-control" name="id_karyawan" value="<?php echo $d->id_karyawan; ?> ">
+						<label>Kode Karyawan</label>
+						<select id="id_karyawan" name="id_karyawan" class="form-control">
+							<?php
+							$id_karyawan=$d->id_karyawan;
+							?>
+							
+							<option <?php if($id_karyawan=="") echo 'selected';?> value="selected"></option>
+							<?php
+							foreach($ms_karyawan as $k){
+								echo "<option value='".$k->id_karyawan."'>".$k->id_karyawan." - ".$k->nama_karyawan."</option>";
+							}
+							?>
+						</select>
 		    		</div>
 		    		<div class="form-group">
 		    			<label>Pendidikan Terakhir</label>

@@ -53,9 +53,19 @@ include 'header.php';
 		    			<input type="file" class="form-control" name="foto_karyawan" value="<?php echo $k->foto_karyawan; ?> ">
 		    		</div>
 				<div class="form-group">
-		    			<label>Agama</label>
-		    			<input type="text" class="form-control" name="agama" value="<?php echo $k->agama; ?> ">
-		    		</div>
+						<label>Agama</label>
+						<select id="agama" name="agama" class="form-control">
+							<?php
+							$agama=$k->agama;
+							?>
+								<option <?php if($agama=="Islam") echo 'selected';?> value="Islam">Islam</option>
+  								<option <?php if($agama=="Katolik") echo 'selected';?> value="Katolik">Katolik</option>
+  								<option <?php if($agama=="Protestan") echo 'selected';?> value="Protestan">Protestan</option>
+  								<option <?php if($agama=="Hindu") echo 'selected';?> value="Hindu">Hindu</option>
+  								<option <?php if($agama=="Budha") echo 'selected';?> value="Budha">Budha</option>
+  								<option <?php if($agama=="Kong Hu chu") echo 'selected';?> value="Kong Hu chu">Kong Hu Chu</option>
+						</select>
+		    			</div>
 		    		<br/>
 		    		<input type="submit" class="btn btn-primary" value="Simpan">
 		    	</form>

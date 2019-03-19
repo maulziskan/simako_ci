@@ -14,7 +14,7 @@ include 'header.php';
 			</div>
 		</div>
 		
-	<form class="form-horizontal" method="post" action="<?php echo base_url("Admin/siswa_aksi");?>" enctype="multipart/form-data">
+	<form class="form-horizontal" method="post" action="siswa_aksi.php" enctype="multipart/form-data">
 		<div class="col-sm-6">
 			<div class="panel">
 				<div class="panel-body">
@@ -34,25 +34,33 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Orang Tua/Wali</label>
 						<div class="col-sm-8">
 							<select name="id_walimurid" class="form-control">
-								<option value="" selected="selected">-</option>
-								<?php
-								foreach($ms_walimurid as $w){
-								echo "<option value='".$w->id_walimurid."'>".$w->id_walimurid." - ".$w->nama_walimurid."</option>";
-								}
-								?>
-							</select>
+							<option value="" selected="selected">-</option>
+							<?php
+							include "../koneksi.php";
+
+							$queryw=mysqli_query($koneksi,"select * from ms_walimurid");
+
+							while ($dataw=mysqli_fetch_array($queryw)){
+								echo "<option value='".$dataw['id_walimurid']."'>".$dataw['id_walimurid']." - ".$dataw['nama_walimurid']."</option>";
+							}
+							?>
+						</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">ID Sekolah</label>
 						<div class="col-sm-8">
 							<select name="id_sekolah" class="form-control">
-								<option value="" selected="selected">-</option>
-								<?php
-								foreach($ms_sekolah as $s){
-								echo "<option value='".$s->id_sekolah."'>".$s->id_sekolah." - ".$s->nama_sekolah."</option>";
-								}
-								?>
+							<option value="" selected="selected">-</option>
+							<?php
+							include "koneksi.php";
+
+							$querys=mysqli_query($koneksi,"select * from ms_sekolah");
+
+							while ($datas=mysqli_fetch_array($querys)){
+								echo "<option value='".$datas['id_sekolah']."'>".$datas['id_sekolah']." - ".$datas['nama_sekolah']."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>
@@ -60,12 +68,16 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Kelas</label>
 						<div class="col-sm-8">
 							<select name="id_kelas" class="form-control">
-								<option value="" selected="selected">-</option>
-								<?php
-								foreach($ms_kelas as $k){
-								echo "<option value='".$k->id_kelas."'>".$k->id_kelas." - ".$k->nama_kelas."</option>";
-								}
-								?>
+							<option value="" selected="selected">-</option>
+							<?php
+							include "koneksi.php";
+
+							$queryk=mysqli_query($koneksi,"select * from ms_kelas");
+
+							while ($datak=mysqli_fetch_array($queryk)){
+								echo "<option value='".$datak['id_kelas']."'>".$datak['id_kelas']." - ".$datak['nama_kelas']."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>
