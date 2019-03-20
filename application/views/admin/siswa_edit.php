@@ -14,36 +14,36 @@ include 'header.php';
 			</div>
 		</div>
 		
-	<form class="form-horizontal" method="post" action="siswa_aksi.php" enctype="multipart/form-data">
+	<form class="form-horizontal" method="post" action="<?php echo base_url("Admin/siswa_update");?>" enctype="multipart/form-data">
 		<div class="col-sm-6">
 			<div class="panel">
 				<div class="panel-body">
+					<?php
+					foreach($ms_siswa as $s){
+						?>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">No. Induk Siswa</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" maxlength="12" name="id_siswa" placeholder="Ketik No. Induk Siswa" required>
+							<input type="text" class="form-control" maxlength="12" name="id_siswa" value="<?php echo $s->id_siswa;?>" readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Nama Lengkap Siswa</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="nama_siswa" placeholder="Ketik Nama Siswa" required>
+							<input type="text" class="form-control" name="nama_siswa" value="<?php echo $s->nama_siswa;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">ID Orang Tua/Wali</label>
 						<div class="col-sm-8">
 							<select name="id_walimurid" class="form-control">
-							<option value="" selected="selected">-</option>
-							<?php
-							include "../koneksi.php";
-
-							$queryw=mysqli_query($koneksi,"select * from ms_walimurid");
-
-							while ($dataw=mysqli_fetch_array($queryw)){
-								echo "<option value='".$dataw['id_walimurid']."'>".$dataw['id_walimurid']." - ".$dataw['nama_walimurid']."</option>";
-							}
-							?>
+							<option value="<?php echo $s->id_walimurid;?>" selected="selected"><?php echo $s->id_walimurid;?></option>
+								<?php
+								foreach($ms_walimurid as $w){
+								echo "<option value='".$w->id_walimurid."'>".$w->id_walimurid." - ".$w->nama_walimurid."</option>";
+								}
+								?>
+							
 						</select>
 						</div>
 					</div>
@@ -51,16 +51,12 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Sekolah</label>
 						<div class="col-sm-8">
 							<select name="id_sekolah" class="form-control">
-							<option value="" selected="selected">-</option>
-							<?php
-							include "koneksi.php";
-
-							$querys=mysqli_query($koneksi,"select * from ms_sekolah");
-
-							while ($datas=mysqli_fetch_array($querys)){
-								echo "<option value='".$datas['id_sekolah']."'>".$datas['id_sekolah']." - ".$datas['nama_sekolah']."</option>";
-							}
-							?>
+							<option value="<?php echo $s->id_sekolah;?>" selected="selected"><?php echo $s->id_sekolah;?></option>
+								<?php
+								foreach($ms_sekolah as $b){
+								echo "<option value='".$b->id_sekolah."'>".$b->id_sekolah." - ".$b->nama_sekolah."</option>";
+								}
+								?>
 							</select>
 						</div>
 					</div>
@@ -68,38 +64,38 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Kelas</label>
 						<div class="col-sm-8">
 							<select name="id_kelas" class="form-control">
-							<option value="" selected="selected">-</option>
-							<?php
-							include "koneksi.php";
-
-							$queryk=mysqli_query($koneksi,"select * from ms_kelas");
-
-							while ($datak=mysqli_fetch_array($queryk)){
-								echo "<option value='".$datak['id_kelas']."'>".$datak['id_kelas']." - ".$datak['nama_kelas']."</option>";
-							}
-							?>
+							<option value="<?php echo $s->id_kelas;?>" selected="selected"><?php echo $s->id_kelas;?></option>
+								<?php
+								foreach($ms_kelas as $k){
+								echo "<option value='".$k->id_kelas."'>".$k->id_kelas." - ".$k->nama_kelas."</option>";
+								}
+								?>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Jenis Kelamin</label>
 						<div class="col-sm-8">
-							<select name="jenis_kelamin" class="form-control">
-								<option value="Laki-laki">Laki-laki</option>
-  								<option value="Perempuan">Perempuan</option>
+							<select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+								<?php
+								$jk=$s->jenis_kelamin;
+								?>
+
+								<option <?php if($jk=="Laki-laki") echo 'selected';?> value="Laki-laki">Laki-laki</option>
+  								<option <?php if($jk=="Perempuan") echo 'selected';?> value="Perempuan">Perempuan</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Tempat Lahir</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="tempat_lahir" placeholder="Ketik Kota Kelahiran Siswa" required>
+							<input type="text" class="form-control" name="tempat_lahir" value="<?php echo $s->tempat_lahir;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Tanggal Lahir</label>
 						<div class="col-sm-8">
-							<input type="date" class="form-control" name="tgl_lahir" required>
+							<input type="date" class="form-control" name="tgl_lahir" value="<?php echo $s->tgl_lahir;?>">
 						</div>
 					</div>
 				</div>
@@ -112,50 +108,53 @@ include 'header.php';
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">NISN</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="nisn" placeholder="Ketik NISN" required>
+							<input type="text" class="form-control" name="nisn" value="<?php echo $s->nisn;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">NIK</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" maxlength="16" name="nik" placeholder="Ketik NIK" required>
+							<input type="text" class="form-control" maxlength="16" name="nik" value="<?php echo $s->nik;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Agama</label>
 						<div class="col-sm-8">
 							<select name="agama" class="form-control">
-								<option value="Islam">Islam</option>
-  								<option value="Katolik">Katolik</option>
-  								<option value="Protestan">Protestan</option>
-  								<option value="Hindhu">Hindhu</option>
-  								<option value="Budha">Budha</option>
-  								<option value="Kong Hu chu">Kong Hu Chu</option>
+							<?php
+							$agama=$s->agama;
+							?>
+								<option <?php if($agama=="Islam") echo 'selected';?> value="Islam">Islam</option>
+  								<option <?php if($agama=="Katolik") echo 'selected';?> value="Katolik">Katolik</option>
+  								<option <?php if($agama=="Protestan") echo 'selected';?> value="Protestan">Protestan</option>
+  								<option <?php if($agama=="Hindu") echo 'selected';?> value="Hindu">Hindu</option>
+  								<option <?php if($agama=="Budha") echo 'selected';?> value="Budha">Budha</option>
+  								<option <?php if($agama=="Kong Hu chu") echo 'selected';?> value="Kong Hu chu">Kong Hu Chu</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Asal Sekolah</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="asal_sekolah" placeholder="Ketik Asal Sekolah" required>
+							<input type="text" class="form-control" name="asal_sekolah" value="<?php echo $s->asal_sekolah;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Tanggal Registrasi</label>
 						<div class="col-sm-8">
-							<input type="date" class="form-control" name="tgl_daftar" required>
+							<input type="date" class="form-control" name="tgl_daftar" value="<?php echo $s->tgl_daftar;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Daftar di Kelas</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="kelas_daftar" placeholder="Ketik Kelas" required>
+							<input type="text" class="form-control" name="kelas_daftar" value="<?php echo $s->kelas_daftar;?>">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Upload Foto Siswa</label>
 						<div class="col-sm-8">
-							<input type="file" class="form-control" name="foto_siswa">
+							<input type="file" class="form-control" name="foto_siswa" value="<?php echo $s->foto_siswa;?>">
 						</div>
 					</div>
 					<input type="submit" class="btn btn-primary" value="simpan">
@@ -164,7 +163,14 @@ include 'header.php';
 			</div>
 		</div>
 	</form>
+				<?php
+					}
+					?>
 </div>
+
+<?php
+include 'footer.php';
+?>
 
 
 

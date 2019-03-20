@@ -22,7 +22,137 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/index', $data);
 		
 	}
+// Batas ------------------------------------------------
+public function belajarharian(){
+	$data['data_belajarharian']= $this->Model_belajarharian->ambil_belajarharian();
+	$this->load->view('admin/belajarharian',$data);
+}
 
+public function belajarharian_input(){
+	$data['ms_walimurid'] = $this->Model_walimurid->ambil_walimuridid()->result();
+	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
+	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
+	$this->load->view('admin/belajarharian_input',$data);	
+}
+
+public function belajarharian_aksi(){
+	
+	$id_belajarharian=$this->input->post('id_belajarharian');
+	$nama_belajarharian=$this->input->post('nama_belajarharian');
+	$id_walimurid=$this->input->post('id_walimurid');
+	$id_sekolah=$this->input->post('id_sekolah');
+	$id_kelas=$this->input->post('id_kelas');
+	$jenis_kelamin=$this->input->post('jenis_kelamin');
+	$tempat_lahir=$this->input->post('tempat_lahir');
+	$tgl_lahir=$this->input->post('tgl_lahir');
+	$nisn=$this->input->post('nisn');
+	$nik=$this->input->post('nik');
+	$agama=$this->input->post('agama');
+	$asal_sekolah=$this->input->post('asal_sekolah');
+	$tgl_daftar=$this->input->post('tgl_daftar');
+	$kelas_daftar=$this->input->post('kelas_daftar');
+	$foto_belajarharian=$this->Model_belajarharian->upload();
+
+	$data = array(
+		'id_belajarharian' => $id_belajarharian,
+		'nama_belajarharian' => $nama_belajarharian,
+		'id_walimurid' => $id_walimurid,
+		'id_sekolah' => $id_sekolah,
+		'id_kelas' => $id_kelas,
+		'jenis_kelamin' => $jenis_kelamin,
+		'tempat_lahir' => $tempat_lahir,
+		'tgl_lahir' => $tgl_lahir,
+		'nisn' => $nisn,
+		'nik' => $nik,
+		'agama' => $agama,
+		'asal_sekolah' => $asal_sekolah,
+		'tgl_daftar' => $tgl_daftar,
+		'kelas_daftar' => $kelas_daftar,
+		'foto_belajarharian' => $foto_belajarharian['file']['file_name']
+		);
+	$this->Model_belajarharian->simpan_belajarharian('ms_belajarharian',$data);
+	redirect('Admin/belajarharian');
+}
+
+public function belajarharian_edit($id_belajarharian){
+	$where = array('id_belajarharian' => $id_belajarharian);
+	$data['ms_belajarharian'] = $this->Model_belajarharian->edit_belajarharian($where,'ms_belajarharian')->result();
+	$data['ms_walimurid'] = $this->Model_walimurid->ambil_walimuridid()->result();
+	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
+	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
+	$this->load->view('admin/belajarharian_edit',$data);
+}
+
+public function belajarharian_update(){
+	$id_belajarharian=$this->input->post('id_belajarharian');
+	$nama_belajarharian=$this->input->post('nama_belajarharian');
+	$id_walimurid=$this->input->post('id_walimurid');
+	$id_sekolah=$this->input->post('id_sekolah');
+	$id_kelas=$this->input->post('id_kelas');
+	$jenis_kelamin=$this->input->post('jenis_kelamin');
+	$tempat_lahir=$this->input->post('tempat_lahir');
+	$tgl_lahir=$this->input->post('tgl_lahir');
+	$nisn=$this->input->post('nisn');
+	$nik=$this->input->post('nik');
+	$agama=$this->input->post('agama');
+	$asal_sekolah=$this->input->post('asal_sekolah');
+	$tgl_daftar=$this->input->post('tgl_daftar');
+	$kelas_daftar=$this->input->post('kelas_daftar');
+	if($foto_belajarharian ['result']=='success'){
+
+	$data = array(
+		'id_belajarharian' => $id_belajarharian,
+		'nama_belajarharian' => $nama_belajarharian,
+		'id_walimurid' => $id_walimurid,
+		'id_sekolah' => $id_sekolah,
+		'id_kelas' => $id_kelas,
+		'jenis_kelamin' => $jenis_kelamin,
+		'tempat_lahir' => $tempat_lahir,
+		'tgl_lahir' => $tgl_lahir,
+		'nisn' => $nisn,
+		'nik' => $nik,
+		'agama' => $agama,
+		'asal_sekolah' => $asal_sekolah,
+		'tgl_daftar' => $tgl_daftar,
+		'kelas_daftar' => $kelas_daftar,
+		'foto_belajarharian' => $foto_belajarharian['file']['file_name']
+		);
+	}
+	else{
+		$data = array(
+		'id_belajarharian' => $id_belajarharian,
+		'nama_belajarharian' => $nama_belajarharian,
+		'id_walimurid' => $id_walimurid,
+		'id_sekolah' => $id_sekolah,
+		'id_kelas' => $id_kelas,
+		'jenis_kelamin' => $jenis_kelamin,
+		'tempat_lahir' => $tempat_lahir,
+		'tgl_lahir' => $tgl_lahir,
+		'nisn' => $nisn,
+		'nik' => $nik,
+		'agama' => $agama,
+		'asal_sekolah' => $asal_sekolah,
+		'tgl_daftar' => $tgl_daftar,
+		'kelas_daftar' => $kelas_daftar
+		);
+	}
+
+	
+
+	$where = array(
+		'id_belajarharian' => $id_belajarharian
+	);
+
+	$this->Model_belajarharian->update_belajarharian($where,$data,'ms_belajarharian');
+	redirect('Admin/belajarharian');
+}
+
+public function belajarharian_hapus($id_belajarharian){
+	$where = array('id_belajarharian' => $id_belajarharian);
+	$this->Model_belajarharian->hapus_belajarharian($where,'ms_belajarharian');
+	redirect('Admin/belajarharian');
+}
+	
 // Batas ------------------------------------------------
 public function siswa_ms(){
 	$data['data_siswa']= $this->Model_siswa->ambil_siswa();
@@ -78,44 +208,63 @@ public function siswa_aksi(){
 public function siswa_edit($id_siswa){
 	$where = array('id_siswa' => $id_siswa);
 	$data['ms_siswa'] = $this->Model_siswa->edit_siswa($where,'ms_siswa')->result();
+	$data['ms_walimurid'] = $this->Model_walimurid->ambil_walimuridid()->result();
+	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
+	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
 	$this->load->view('admin/siswa_edit',$data);
 }
 
 public function siswa_update(){
-	$foto_siswa=$this->Model_siswa->edit_upload();
 	$id_siswa=$this->input->post('id_siswa');
 	$nama_siswa=$this->input->post('nama_siswa');
-	$alamat_siswa=$this->input->post('alamat_siswa');
-	$no_telp=$this->input->post('no_telp');
-	$no_hp=$this->input->post('no_hp');
-	$email_siswa=$this->input->post('email_siswa');
-	$status_kerja=$this->input->post('status_kerja');
-	$jabatan=$this->input->post('jabatan');
+	$id_walimurid=$this->input->post('id_walimurid');
+	$id_sekolah=$this->input->post('id_sekolah');
+	$id_kelas=$this->input->post('id_kelas');
+	$jenis_kelamin=$this->input->post('jenis_kelamin');
+	$tempat_lahir=$this->input->post('tempat_lahir');
+	$tgl_lahir=$this->input->post('tgl_lahir');
+	$nisn=$this->input->post('nisn');
+	$nik=$this->input->post('nik');
 	$agama=$this->input->post('agama');
-	if($foto_siswa['result']=='success'){
-		//
-		$data = array(
-			'nama_siswa' => $nama_siswa,
-			'alamat_siswa' => $alamat_siswa,
-			'no_telp' => $no_telp,
-			'no_hp' => $no_hp,
-			'email_siswa' => $email_siswa,
-			'status_kerja' => $status_kerja,
-			'jabatan' => $jabatan,
-			'foto_siswa' => $foto_siswa['file']['file_name'],
-			'agama' => $agama
+	$asal_sekolah=$this->input->post('asal_sekolah');
+	$tgl_daftar=$this->input->post('tgl_daftar');
+	$kelas_daftar=$this->input->post('kelas_daftar');
+	if($foto_siswa ['result']=='success'){
+
+	$data = array(
+		'id_siswa' => $id_siswa,
+		'nama_siswa' => $nama_siswa,
+		'id_walimurid' => $id_walimurid,
+		'id_sekolah' => $id_sekolah,
+		'id_kelas' => $id_kelas,
+		'jenis_kelamin' => $jenis_kelamin,
+		'tempat_lahir' => $tempat_lahir,
+		'tgl_lahir' => $tgl_lahir,
+		'nisn' => $nisn,
+		'nik' => $nik,
+		'agama' => $agama,
+		'asal_sekolah' => $asal_sekolah,
+		'tgl_daftar' => $tgl_daftar,
+		'kelas_daftar' => $kelas_daftar,
+		'foto_siswa' => $foto_siswa['file']['file_name']
 		);
 	}
 	else{
 		$data = array(
-			'nama_siswa' => $nama_siswa,
-			'alamat_siswa' => $alamat_siswa,
-			'no_telp' => $no_telp,
-			'no_hp' => $no_hp,
-			'email_siswa' => $email_siswa,
-			'status_kerja' => $status_kerja,
-			'jabatan' => $jabatan,
-			'agama' => $agama
+		'id_siswa' => $id_siswa,
+		'nama_siswa' => $nama_siswa,
+		'id_walimurid' => $id_walimurid,
+		'id_sekolah' => $id_sekolah,
+		'id_kelas' => $id_kelas,
+		'jenis_kelamin' => $jenis_kelamin,
+		'tempat_lahir' => $tempat_lahir,
+		'tgl_lahir' => $tgl_lahir,
+		'nisn' => $nisn,
+		'nik' => $nik,
+		'agama' => $agama,
+		'asal_sekolah' => $asal_sekolah,
+		'tgl_daftar' => $tgl_daftar,
+		'kelas_daftar' => $kelas_daftar
 		);
 	}
 
