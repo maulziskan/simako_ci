@@ -29,46 +29,58 @@ public function belajarharian(){
 }
 
 public function belajarharian_input(){
-	$data['ms_walimurid'] = $this->Model_walimurid->ambil_walimuridid()->result();
-	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
+	$data['ms_guru'] = $this->Model_guruid->ambil_guruid()->result();
+	$data['ms_siswa'] = $this->Model_siswa->ambil_siswaid()->result();
 	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
+	$data['ms_mapel'] = $this->Model_mapel->ambil_mapelid()->result();
 	$this->load->view('admin/belajarharian_input',$data);	
+
 }
 
 public function belajarharian_aksi(){
 	
 	$id_belajarharian=$this->input->post('id_belajarharian');
-	$nama_belajarharian=$this->input->post('nama_belajarharian');
-	$id_walimurid=$this->input->post('id_walimurid');
-	$id_sekolah=$this->input->post('id_sekolah');
+	$id_guru=$this->input->post('id_guru');
 	$id_kelas=$this->input->post('id_kelas');
-	$jenis_kelamin=$this->input->post('jenis_kelamin');
-	$tempat_lahir=$this->input->post('tempat_lahir');
-	$tgl_lahir=$this->input->post('tgl_lahir');
-	$nisn=$this->input->post('nisn');
-	$nik=$this->input->post('nik');
-	$agama=$this->input->post('agama');
-	$asal_sekolah=$this->input->post('asal_sekolah');
-	$tgl_daftar=$this->input->post('tgl_daftar');
-	$kelas_daftar=$this->input->post('kelas_daftar');
-	$foto_belajarharian=$this->Model_belajarharian->upload();
+	$id_siswa=$this->input->post('id_siswa');
+	$id_mapel=$this->input->post('id_mapel');
+	$tgl_belajar=$this->input->post('tgl_belajar');
+	$jam_mulai=$this->input->post('jam_mulai');
+	$ketertarikan=$this->input->post('ketertarikan');
+	$keaktifan=$this->input->post('keaktifan');
+	$kedisiplinan=$this->input->post('kedisiplinan');
+	$ketekunan=$this->input->post('ketekunan');
+	$konsentrasi=$this->input->post('konsentrasi');
+	$antusiasme=$this->input->post('antusiasme');
+	$kesopanan=$this->input->post('kesopanan');
+	$motivasi=$this->input->post('motivasi');
+	$kemandirian=$this->input->post('kemandirian');
+	$happiness=$this->input->post('happiness');
+	$standar_kompetensi=$this->input->post('standar_kompetensi');
+	$pencapaian_siswa=$this->input->post('pencapaian_siswa');
+	$saran_guru=$this->input->post('saran_guru');
 
 	$data = array(
-		'id_belajarharian' => $id_belajarharian,
-		'nama_belajarharian' => $nama_belajarharian,
-		'id_walimurid' => $id_walimurid,
-		'id_sekolah' => $id_sekolah,
-		'id_kelas' => $id_kelas,
-		'jenis_kelamin' => $jenis_kelamin,
-		'tempat_lahir' => $tempat_lahir,
-		'tgl_lahir' => $tgl_lahir,
-		'nisn' => $nisn,
-		'nik' => $nik,
-		'agama' => $agama,
-		'asal_sekolah' => $asal_sekolah,
-		'tgl_daftar' => $tgl_daftar,
-		'kelas_daftar' => $kelas_daftar,
-		'foto_belajarharian' => $foto_belajarharian['file']['file_name']
+	'id_belajarharian' => $id_belajarharian,
+	'id_guru' => $id_guru,
+	'id_kelas' => $id_kelas,
+	'id_siswa' => $id_siswa,
+	'id_mapel' => $id_mapel,
+	'tgl_belajar' => $tgl_belajar,
+	'jam_mulai' => $jam_mulai,
+	'ketertarikan' => $ketertarikan,
+	'keaktifan' => $keaktifan,
+	'kedisiplinan' => $kedisiplinan,
+	'ketekunan' => $ketekunan,
+	'konsentrasi' => $konsentrasi,
+	'antusiasme' => $antusiasme,
+	'kesopanan' => $kesopanan,
+	'motivasi' => $motivasi,
+	'kemandirian' => $kemandirian,
+	'happiness' => $happiness,
+	'standar_kompetensi' => $standar_kompetensi,
+	'pencapaian_siswa' => $pencapaian_siswa,
+	'saran_guru' => $saran_guru
 		);
 	$this->Model_belajarharian->simpan_belajarharian('ms_belajarharian',$data);
 	redirect('Admin/belajarharian');
@@ -84,59 +96,50 @@ public function belajarharian_edit($id_belajarharian){
 }
 
 public function belajarharian_update(){
+	
 	$id_belajarharian=$this->input->post('id_belajarharian');
-	$nama_belajarharian=$this->input->post('nama_belajarharian');
-	$id_walimurid=$this->input->post('id_walimurid');
-	$id_sekolah=$this->input->post('id_sekolah');
+	$id_guru=$this->input->post('id_guru');
 	$id_kelas=$this->input->post('id_kelas');
-	$jenis_kelamin=$this->input->post('jenis_kelamin');
-	$tempat_lahir=$this->input->post('tempat_lahir');
-	$tgl_lahir=$this->input->post('tgl_lahir');
-	$nisn=$this->input->post('nisn');
-	$nik=$this->input->post('nik');
-	$agama=$this->input->post('agama');
-	$asal_sekolah=$this->input->post('asal_sekolah');
-	$tgl_daftar=$this->input->post('tgl_daftar');
-	$kelas_daftar=$this->input->post('kelas_daftar');
-	if($foto_belajarharian ['result']=='success'){
+	$id_siswa=$this->input->post('id_siswa');
+	$id_mapel=$this->input->post('id_mapel');
+	$tgl_belajar=$this->input->post('tgl_belajar');
+	$jam_mulai=$this->input->post('jam_mulai');
+	$ketertarikan=$this->input->post('ketertarikan');
+	$keaktifan=$this->input->post('keaktifan');
+	$kedisiplinan=$this->input->post('kedisiplinan');
+	$ketekunan=$this->input->post('ketekunan');
+	$konsentrasi=$this->input->post('konsentrasi');
+	$antusiasme=$this->input->post('antusiasme');
+	$kesopanan=$this->input->post('kesopanan');
+	$motivasi=$this->input->post('motivasi');
+	$kemandirian=$this->input->post('kemandirian');
+	$happiness=$this->input->post('happiness');
+	$standar_kompetensi=$this->input->post('standar_kompetensi');
+	$pencapaian_siswa=$this->input->post('pencapaian_siswa');
+	$saran_guru=$this->input->post('saran_guru');
 
 	$data = array(
-		'id_belajarharian' => $id_belajarharian,
-		'nama_belajarharian' => $nama_belajarharian,
-		'id_walimurid' => $id_walimurid,
-		'id_sekolah' => $id_sekolah,
-		'id_kelas' => $id_kelas,
-		'jenis_kelamin' => $jenis_kelamin,
-		'tempat_lahir' => $tempat_lahir,
-		'tgl_lahir' => $tgl_lahir,
-		'nisn' => $nisn,
-		'nik' => $nik,
-		'agama' => $agama,
-		'asal_sekolah' => $asal_sekolah,
-		'tgl_daftar' => $tgl_daftar,
-		'kelas_daftar' => $kelas_daftar,
-		'foto_belajarharian' => $foto_belajarharian['file']['file_name']
+	'id_belajarharian' => $id_belajarharian,
+	'id_guru' => $id_guru,
+	'id_kelas' => $id_kelas,
+	'id_siswa' => $id_siswa,
+	'id_mapel' => $id_mapel,
+	'tgl_belajar' => $tgl_belajar,
+	'jam_mulai' => $jam_mulai,
+	'ketertarikan' => $ketertarikan,
+	'keaktifan' => $keaktifan,
+	'kedisiplinan' => $kedisiplinan,
+	'ketekunan' => $ketekunan,
+	'konsentrasi' => $konsentrasi,
+	'antusiasme' => $antusiasme,
+	'kesopanan' => $kesopanan,
+	'motivasi' => $motivasi,
+	'kemandirian' => $kemandirian,
+	'happiness' => $happiness,
+	'standar_kompetensi' => $standar_kompetensi,
+	'pencapaian_siswa' => $pencapaian_siswa,
+	'saran_guru' => $saran_guru
 		);
-	}
-	else{
-		$data = array(
-		'id_belajarharian' => $id_belajarharian,
-		'nama_belajarharian' => $nama_belajarharian,
-		'id_walimurid' => $id_walimurid,
-		'id_sekolah' => $id_sekolah,
-		'id_kelas' => $id_kelas,
-		'jenis_kelamin' => $jenis_kelamin,
-		'tempat_lahir' => $tempat_lahir,
-		'tgl_lahir' => $tgl_lahir,
-		'nisn' => $nisn,
-		'nik' => $nik,
-		'agama' => $agama,
-		'asal_sekolah' => $asal_sekolah,
-		'tgl_daftar' => $tgl_daftar,
-		'kelas_daftar' => $kelas_daftar
-		);
-	}
-
 	
 
 	$where = array(
