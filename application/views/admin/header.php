@@ -60,7 +60,7 @@ ini_set('display_errors', 1);
                   <li><a href="<?php echo base_url("Admin/"); ?>sekolah_ms">Master Sekolah</a></li>
               </ul>
           </li>
-          <li><a href="<?php echo base_url("Admin/"); ?>belajar"><i class="glyphicon glyphicon-scale"></i> Kegiatan Belajar</a></li>
+          <li><a href="<?php echo base_url("Admin/"); ?>belajarharian"><i class="glyphicon glyphicon-scale"></i> Kegiatan Belajar</a></li>
           <li><a href="<?php echo base_url("Admin/"); ?>laporan"><i class="glyphicon glyphicon-tasks"></i> Laporan</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

@@ -8,7 +8,8 @@
 		}
 
 		public function ambil_guruid(){
-			return $this->db->get_where('ms_guru','id_guru');
+			$this->db->select('id_guru , nama_guru');
+			return $this->db->get('ms_guru');
 		}
 
 		public function simpan_guru($table,$data){

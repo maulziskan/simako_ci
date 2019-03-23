@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
 		$this->load->model("Model_karyawan");
 		$this->load->model("Model_guru");
 		$this->load->model("Model_sekolah");
-		$this->load->model("Model_belajar");
+		$this->load->model("Model_belajarharian");
 
 		if ($this->session->userdata('nama_user')=="") {
 			redirect('auth');
@@ -29,7 +29,7 @@ public function belajarharian(){
 }
 
 public function belajarharian_input(){
-	$data['ms_guru'] = $this->Model_guruid->ambil_guruid()->result();
+	$data['ms_guru'] = $this->Model_guru->ambil_guruid()->result();
 	$data['ms_siswa'] = $this->Model_siswa->ambil_siswaid()->result();
 	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
 	$data['ms_mapel'] = $this->Model_mapel->ambil_mapelid()->result();
@@ -38,6 +38,7 @@ public function belajarharian_input(){
 }
 
 public function belajarharian_aksi(){
+	
 	
 	$id_belajarharian=$this->input->post('id_belajarharian');
 	$id_guru=$this->input->post('id_guru');
@@ -82,14 +83,15 @@ public function belajarharian_aksi(){
 	'pencapaian_siswa' => $pencapaian_siswa,
 	'saran_guru' => $saran_guru
 		);
-	$this->Model_belajarharian->simpan_belajarharian('ms_belajarharian',$data);
+	$this->Model_belajarharian->simpan_belajarharian('belajarharian',$data);
 	redirect('Admin/belajarharian');
 }
 
 public function belajarharian_edit($id_belajarharian){
 	$where = array('id_belajarharian' => $id_belajarharian);
-	$data['ms_belajarharian'] = $this->Model_belajarharian->edit_belajarharian($where,'ms_belajarharian')->result();
-	$data['ms_walimurid'] = $this->Model_walimurid->ambil_walimuridid()->result();
+	$data['belajarharian'] = $this->Model_belajarharian->edit_belajarharian($where,'belajarharian')->result();
+	$data['ms_siswa'] = $this->Model_siswa->ambil_siswaid()->result();
+	$data['ms_mapel'] = $this->Model_mapel->ambil_mapelid()->result();
 	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
 	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
 	$this->load->view('admin/belajarharian_edit',$data);
@@ -119,7 +121,6 @@ public function belajarharian_update(){
 	$saran_guru=$this->input->post('saran_guru');
 
 	$data = array(
-	'id_belajarharian' => $id_belajarharian,
 	'id_guru' => $id_guru,
 	'id_kelas' => $id_kelas,
 	'id_siswa' => $id_siswa,
@@ -146,13 +147,13 @@ public function belajarharian_update(){
 		'id_belajarharian' => $id_belajarharian
 	);
 
-	$this->Model_belajarharian->update_belajarharian($where,$data,'ms_belajarharian');
+	$this->Model_belajarharian->update_belajarharian($where,$data,'belajarharian');
 	redirect('Admin/belajarharian');
 }
 
 public function belajarharian_hapus($id_belajarharian){
 	$where = array('id_belajarharian' => $id_belajarharian);
-	$this->Model_belajarharian->hapus_belajarharian($where,'ms_belajarharian');
+	$this->Model_belajarharian->hapus_belajarharian($where,'belajarharian');
 	redirect('Admin/belajarharian');
 }
 	

@@ -8,7 +8,8 @@
 		}
 
 		public function ambil_mapelid(){
-			return $this->db->get_where('ms_mapel','id_mapel');
+			$this->db->select('id_mapel , nama_mapel');
+			return $this->db->get('ms_mapel');
 		}
 
 		public function simpan_mapel($table,$data){
