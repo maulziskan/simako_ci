@@ -23,6 +23,11 @@ class Admin extends CI_Controller {
 		
 	}
 // Batas ------------------------------------------------
+public function belajarharian_report(){
+	$data['data_belajarharian']= $this->Model_belajarharian->ambil_belajarharian();
+	$this->load->view('admin/reports/belajarharian_report',$data);
+}
+
 public function belajarharian(){
 	$data['data_belajarharian']= $this->Model_belajarharian->ambil_belajarharian();
 	$this->load->view('admin/belajarharian',$data);
@@ -158,6 +163,11 @@ public function belajarharian_hapus($id_belajarharian){
 }
 	
 // Batas ------------------------------------------------
+public function siswa_report(){
+	$data['data_siswa']= $this->Model_siswa->ambil_siswa();
+	$this->load->view('admin/reports/siswa_report',$data);
+}
+
 public function siswa_ms(){
 	$data['data_siswa']= $this->Model_siswa->ambil_siswa();
 	$this->load->view('admin/siswa_ms',$data);
@@ -290,6 +300,10 @@ public function siswa_hapus($id_siswa){
 	
 
 // Batas ------------------------------------------------
+	public function kelas_report(){
+		$data['data_kelas']= $this->Model_kelas->ambil_kelas();
+		$this->load->view('admin/reports/kelas_report',$data);
+	}
 
 	public function kelas_ms(){
 		$data['data_kelas']= $this->Model_kelas->ambil_kelas();
@@ -345,6 +359,10 @@ public function siswa_hapus($id_siswa){
 	}
 
 // Batas -------------------------------------------
+	public function mapel_report(){
+	$data['data_mapel']= $this->Model_mapel->ambil_mapel();
+	$this->load->view('admin/reports/mapel_report',$data);
+	}
 
 	public function mapel_ms(){
 		$data['data_mapel']= $this->Model_mapel->ambil_mapel();
@@ -399,6 +417,11 @@ public function siswa_hapus($id_siswa){
 	}
 
 // Batas -------------------------------------
+
+public function walimurid_report(){
+	$data['data_walimurid']= $this->Model_walimurid->ambil_walimurid();
+	$this->load->view('admin/reports/walimurid_report',$data);
+}
 
 public function walimurid_ms(){
 	$data['data_walimurid']= $this->Model_walimurid->ambil_walimurid();
@@ -474,6 +497,12 @@ public function walimurid_hapus($id_walimurid){
 }
 
 // Batas -------------------------------------
+
+public function karyawan_report(){
+	$data['data_karyawan']= $this->Model_karyawan->ambil_karyawan();
+	$this->load->view('admin/reports/karyawan_report',$data);
+}
+
 public function karyawan_ms(){
 	$data['data_karyawan']= $this->Model_karyawan->ambil_karyawan();
 	$this->load->view('admin/karyawan_ms',$data);
@@ -571,6 +600,11 @@ public function karyawan_hapus($id_karyawan){
 	redirect('Admin/karyawan_ms');
 }
 // Batas -------------------------------------
+public function guru_report(){
+	$data['data_guru']= $this->Model_guru->ambil_guru();
+	$this->load->view('admin/reports/guru_report',$data);
+}
+
 public function guru_ms(){
 	$data['data_guru']= $this->Model_guru->ambil_guru();
 	$this->load->view('admin/guru_ms',$data);
@@ -646,6 +680,11 @@ public function guru_hapus($id_guru){
 	redirect('Admin/guru_ms');
 }
 // Batas -------------------------------------
+public function sekolah_report(){
+	$data['data_sekolah']= $this->Model_sekolah->ambil_sekolah();
+	$this->load->view('admin/reports/sekolah_report',$data);
+}
+
 public function sekolah_ms(){
 	$data['data_sekolah']= $this->Model_sekolah->ambil_sekolah();
 	$this->load->view('admin/sekolah_ms',$data);

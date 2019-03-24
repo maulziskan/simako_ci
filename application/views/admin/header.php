@@ -42,7 +42,8 @@ ini_set('display_errors', 1);
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="<?php echo base_url("Admin/"); ?>index"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
+          <li class="active"><a href="<?php echo base_url("Admin/"); ?>index"><i class="glyphicon glyphicon-home"></i> Dashboard</a>
+          </li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <i class="glyphicon glyphicon-user"></i> Data Master <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -51,6 +52,7 @@ ini_set('display_errors', 1);
                   <li><a href="<?php echo base_url("Admin/"); ?>walimurid_ms">Master Wali Murid</a></li>
                   <li><a href="<?php echo base_url("Admin/"); ?>siswa_ms">Master Siswa</a></li>
               </ul>
+          </li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button
             aria-haspopup="true" aria-expanded="false">
             <i class="glyphicon glyphicon-blackboard"></i> Data Sekolah<span class="caret"></span></a>
@@ -61,12 +63,25 @@ ini_set('display_errors', 1);
               </ul>
           </li>
           <li><a href="<?php echo base_url("Admin/"); ?>belajarharian"><i class="glyphicon glyphicon-scale"></i> Kegiatan Belajar</a></li>
-          <li><a href="<?php echo base_url("Admin/"); ?>laporan"><i class="glyphicon glyphicon-tasks"></i> Laporan</a></li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button
+            aria-haspopup="true" aria-expanded="false">
+            <i class="glyphicon glyphicon-blackboard"></i> Laporan<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li><a target="_blank" href="<?php echo base_url("Admin/kelas_report"); ?>">Laporan Data Kelas</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/mapel_report"); ?>">Laporan Data Mata Pelajaran</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/walimurid_report"); ?>">Laporan Data Orang Tua/Wali</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/siswa_report"); ?>">Laporan Data Siswa</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/karyawan_report"); ?>">Laporan Data Karyawan</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/guru_report"); ?>">Laporan Data Guru</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/sekolah_report"); ?>">Laporan Data Sekolah</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/belajarharian_report"); ?>">Laporan Kegiatan Belajar Harian</a></li>
+              </ul>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
               <li><p class="navbar-text">Hallo, <b><?php echo $_SESSION['nama_user']; ?></b> !</p></li>
               <li><a href="<?php echo base_url("Admin/"); ?>logout"><i class="glyphicon glyphicon-log-out"></i>Log Out</a></li>
-            </ul>
+        </ul>
 
 
       </div>

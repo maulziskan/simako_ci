@@ -47,10 +47,14 @@ include 'header.php';
 							$id_karyawan=$d->id_karyawan;
 							?>
 							
-							<option value="<?php echo $id_karyawan;?>"><?php echo $id_karyawan;?></option>
+							
 							<?php
 							foreach($ms_karyawan as $k){
-								echo "<option value='".$k->id_karyawan."'>".$k->id_karyawan." - ".$k->nama_karyawan."</option>";
+								$selected='';
+								if($d->id_karyawan==$k->id_karyawan){ 
+									$selected = "selected";
+								}
+								echo "<option {$selected} value='".$k->id_karyawan."'>".$k->id_karyawan." - ".$k->nama_karyawan."</option>";
 							}
 							?>
 						</select>
