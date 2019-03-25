@@ -23,6 +23,12 @@ class Admin extends CI_Controller {
 		
 	}
 // Batas ------------------------------------------------
+public function belajarharian_reportid($id_belajarharian){
+	$data['belajarharian'] = $this->Model_belajarharian->ambil_belajarharianid();
+	$this->load->view('admin/reports/belajarharian_reportid',$data);
+}
+
+
 public function belajarharian_report(){
 	$data['data_belajarharian']= $this->Model_belajarharian->ambil_belajarharian();
 	$this->load->view('admin/reports/belajarharian_report',$data);

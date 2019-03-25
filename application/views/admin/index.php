@@ -28,12 +28,15 @@ include 'header.php';
 								<span class="pull-right">
 									
 									<?php 
-									$pelanggan = mysqli_query($koneksi,"select * from pelanggan");
-									echo mysqli_num_rows($pelanggan);
+
+									$siswa =$this->db->query("select * from ms_siswa")->row();
+									print_r($siswa);
+									die;
+									echo ($siswa);
 									?>
 								</span>
 							</h1>
-							Jumlah Pelanggan
+							Jumlah Siswa
 						</div>						
 					</div>				
 				</div>		

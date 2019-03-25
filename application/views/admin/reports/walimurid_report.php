@@ -1,6 +1,16 @@
-<?php
-include 'header.php';
-?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="maulziskan">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Sistem Manajemen Sekolah Pride HS</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.css">
+  <link rel="icon" type="image/png" href="<?php echo base_url(); ?>images/logo.png">
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
+</head>
+<body style="background: #b0b3b7">
 
 <div class="container">
 	<div class="panel">
@@ -8,7 +18,6 @@ include 'header.php';
 			<h4>Data Master Wali Murid</h4>
 		</div>
 		<div class="panel-body">
-			<a href="<?php echo base_url("Admin/walimurid_input"); ?>" class="btn btn-sm btn-info pull-right">Tambah</a>
 			<br/>
 			<br/>
 			<table class="table table-bordered table-stripped table-hover">
@@ -17,8 +26,11 @@ include 'header.php';
 					<th>Kode Wali Murid</th>
 					<th>Nama Orang Tua/Wali</th>
 					<th>Alamat</th>
+					<th>Hubungan Kerabat</th>
+					<th>No. Telepon</th>
 					<th>No.Handphone</th>
-					<th width="10%"><center>Opsi</center></th>
+					<th>Alamat Email</th>
+					<th>Pekerjaan</th>					
 				</tr>
 
 				<?php
@@ -32,11 +44,11 @@ include 'header.php';
 						<td><?php echo $value->id_walimurid; ?></td>
 						<td><?php echo $value->nama_walimurid; ?></td>
 						<td><?php echo $value->alamat_walimurid; ?></td>
+						<td><?php echo $value->hubungan_kerabat; ?></td>
+						<td><?php echo $value->no_telp; ?></td>
 						<td><?php echo $value->no_hp; ?></td>
-						<td>
-							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_walimurid; ?>" href="<?= base_url('Admin/walimurid_edit/'.$value->id_walimurid); ?>"><span class="glyphicon glyphicon-edit"></span></a>
-							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_walimurid; ?>" href="<?= base_url('Admin/walimurid_hapus/'.$value->id_walimurid); ?>"><span class="glyphicon glyphicon-trash"></span></a>
-						</td>
+						<td><?php echo $value->email_walimurid; ?></td>
+						<td><?php echo $value->pekerjaan; ?></td>
 					</tr>
 					<?php
 				}
@@ -46,6 +58,9 @@ include 'header.php';
 	</div>
 </div>
 
-<?php
-include 'footer.php';
-?>
+<script type="text/javascript">
+			window.print();
+		</script>
+
+</body>
+</html>

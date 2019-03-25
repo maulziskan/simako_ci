@@ -75,6 +75,8 @@ ini_set('display_errors', 1);
                   <li><a target="_blank" href="<?php echo base_url("Admin/guru_report"); ?>">Laporan Data Guru</a></li>
                   <li><a target="_blank" href="<?php echo base_url("Admin/sekolah_report"); ?>">Laporan Data Sekolah</a></li>
                   <li><a target="_blank" href="<?php echo base_url("Admin/belajarharian_report"); ?>">Laporan Kegiatan Belajar Harian</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/belajarharian_reportid"); ?>">Laporan Kegiatan Belajar Harian Per Siswa</a></li>
+              
               </ul>
           </li>
         </ul>

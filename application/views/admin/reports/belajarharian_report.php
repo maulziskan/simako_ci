@@ -1,7 +1,16 @@
-<?php
-include 'header.php';
-?>
-
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="maulziskan">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Sistem Manajemen Sekolah Pride HS</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.css">
+  <link rel="icon" type="image/png" href="<?php echo base_url(); ?>images/logo.png">
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
+</head>
+<body style="background: #b0b3b7">
 <div class="container-fluid">
 	<div class="panel">
 	<div class="panel-heading">
@@ -9,20 +18,20 @@ include 'header.php';
 	</div>
 
 	<div class="panel-body">
-		<a href="<?php echo base_url("Admin/belajarharian_input"); ?>" class="btn btn-sm btn-info pull-right">Tambah</a>
 		<br/>
 		<br/>
 		<table class="table table-bordered table-striped">
 			<tr>
 				<th width="1%">No.</th>
 				<th>No. Belajar Harian</th>
-                <th>ID Guru</th>
+        <th>ID Guru</th>
 				<th>No. Induk Siswa</th>
 				<th>Kelas</th>
 				<th>Kode Mata Pelajaran</th>
 				<th>Tanggal KBM</th>
 				<th>Jam KBM</th>
-				<th width="12%"><center>Opsi</center></th>
+				<th>Pencapaian Siswa</th>
+				
 			</tr>
 
 			<?php
@@ -39,10 +48,8 @@ include 'header.php';
 					<td><?php echo $value->id_mapel; ?></td>
 					<td><?php echo $value->tgl_belajar; ?></td>
 					<td><?php echo $value->jam_mulai; ?></td>
-					<td>
-							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_belajarharian; ?>" href="<?= base_url('Admin/belajarharian_edit/'.$value->id_belajarharian); ?>"><span class="glyphicon glyphicon-edit"></span></a>
-							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_belajarharian; ?>" href="<?= base_url('Admin/belajarharian_hapus/'.$value->id_belajarharian); ?>"><span class="glyphicon glyphicon-trash"></span></a>
-					</td>	
+					<td><?php echo $value->pencapaian_siswa; ?></td>
+					
 				</tr>
 				<?php
 			}
@@ -52,10 +59,11 @@ include 'header.php';
 			</table>
 		</div>
 	</div>
+	<script type="text/javascript">
+			window.print();
+		</script>
 
-	<?php
-	include 'footer.php';
-	?>
-
+</body>
+</html>
 	
 				

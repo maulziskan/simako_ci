@@ -1,7 +1,16 @@
-<?php
-include 'header.php';
-?>
-
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="maulziskan">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Sistem Manajemen Sekolah Pride HS</title>
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.css">
+  <link rel="icon" type="image/png" href="<?php echo base_url(); ?>images/logo.png">
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+  <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
+</head>
+<body style="background: #b0b3b7">
 <div class="container-fluid">
 	<div class="panel">
 	<div class="panel-heading">
@@ -9,7 +18,6 @@ include 'header.php';
 	</div>
 
 	<div class="panel-body">
-		<a href="<?php echo base_url("Admin/"); ?>siswa_input" class="btn btn-sm btn-info pull-right">Tambah</a>
 		<br/>
 		<br/>
 		<table class="table table-bordered table-striped">
@@ -20,7 +28,7 @@ include 'header.php';
 				<th>ID Orang Tua/Wali</th>
 				<th>Kode Kelas Siswa</th>
 				<th>Foto Siswa</th>
-				<th width="12%"><center>Opsi</center></th>
+				
 			</tr>
 
 			<?php
@@ -35,10 +43,7 @@ include 'header.php';
 					<td><?php echo $value->id_walimurid; ?></td>
 					<td><?php echo $value->id_kelas; ?></td>
 					<td><?php echo "<img src='".base_url("./upload/siswa/".$value->foto_siswa)."' width='100' height='100'>";?></td>
-					<td>
-							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_siswa; ?>" href="<?= base_url('Admin/siswa_edit/'.$value->id_siswa); ?>"><span class="glyphicon glyphicon-edit"></span></a>
-							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_siswa; ?>" href="<?= base_url('Admin/siswa_hapus/'.$value->id_siswa); ?>"><span class="glyphicon glyphicon-trash"></span></a>
-					</td>	
+					
 				</tr>
 				<?php
 			}
@@ -49,9 +54,12 @@ include 'header.php';
 		</div>
 	</div>
 
-	<?php
-	include 'footer.php';
-	?>
+	<script type="text/javascript">
+			window.print();
+		</script>
+
+</body>
+</html>
 
 	
 				
