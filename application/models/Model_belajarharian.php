@@ -2,6 +2,11 @@
 
 	class Model_belajarharian extends CI_Model {
 
+		public function autoid_belajarharian(){
+			$sql="select max(id_belajarharian) as noakhir from belajarharian where month(tgl_belajar)=month(curdate()) and year(tgl_belajar)=year(curdate())";
+			$this->db->query($sql);
+		}
+
 		public function ambil_belajarharian() {
 			return $this->db->get('belajarharian');
 			

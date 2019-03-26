@@ -21,7 +21,7 @@ include 'header.php';
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">No. belajarharian</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" maxlength="12" name="id_belajarharian" placeholder="Ketik No. Induk belajarharian" required>
+							<input type="text" class="form-control" maxlength="14" name="id_belajarharian" placeholder="Ketik No. Induk belajarharian" required>
 						</div>
 					</div>
 					<div class="form-group">

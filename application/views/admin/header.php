@@ -51,6 +51,7 @@ ini_set('display_errors', 1);
                   <li><a href="<?php echo base_url("Admin/"); ?>mapel_ms">Master Mata Pelajaran</a></li>
                   <li><a href="<?php echo base_url("Admin/"); ?>walimurid_ms">Master Wali Murid</a></li>
                   <li><a href="<?php echo base_url("Admin/"); ?>siswa_ms">Master Siswa</a></li>
+                  <li><a href="<?php echo base_url("Admin/"); ?>user_ms">Master User</a></li>
               </ul>
           </li>
           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button

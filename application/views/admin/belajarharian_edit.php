@@ -21,17 +21,25 @@ include 'header.php';
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">No. belajarharian</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" maxlength="12" name="id_belajarharian" value="<?php echo $b->id_belajarharian;?>" readonly>
+							<input type="text" class="form-control" maxlength="14" name="id_belajarharian" value="<?php echo $b->id_belajarharian;?>" readonly>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Kode Guru</label>
 						<div class="col-sm-8">
 						<select name="id_guru" class="form-control">
-							<option value="<?php echo $b->id_guru;?>" selected="selected"><?php echo $b->id_guru;?></option>
+						<?php
+							$id_guru=$b->id_guru;
+							?>
+							
+							
 							<?php
 							foreach($ms_guru as $g){
-								echo "<option value='".$g->id_guru."'>".$g->id_guru." - ".$g->nama_guru."</option>";
+								$selected='';
+								if($b->id_guru==$g->id_guru){ 
+									$selected = "selected";
+								}
+								echo "<option {$selected} value='".$g->id_guru."'>".$g->id_guru." - ".$g->nama_guru."</option>";
 							}
 							?>
 						</select>
@@ -41,12 +49,20 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">Kelas</label>
 						<div class="col-sm-8">
 							<select name="id_kelas" class="form-control">
-								<option value="<?php echo $b->id_kelas;?>" selected="selected"><?php echo $b->id_kelas;?></option>
-								<?php
-								foreach($ms_kelas as $k){
-								echo "<option value='".$k->id_kelas."'>".$k->id_kelas." - ".$k->nama_kelas."</option>";
+							<?php
+							$id_kelas=$b->id_kelas;
+							?>
+							
+							
+							<?php
+							foreach($ms_kelas as $k){
+								$selected='';
+								if($b->id_kelas==$k->id_kelas){ 
+									$selected = "selected";
 								}
-								?>
+								echo "<option {$selected} value='".$k->id_kelas."'>".$k->id_kelas." - ".$k->nama_kelas."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>
@@ -54,12 +70,20 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">No. Induk Siswa</label>
 						<div class="col-sm-8">
 							<select name="id_siswa" class="form-control">
-								<option value="<?php echo $b->id_siswa;?>" selected="selected"><?php echo $b->id_siswa;?></option>
-								<?php
-								foreach($ms_siswa as $s){
-								echo "<option value='".$s->id_siswa."'>".$s->id_siswa." - ".$s->nama_siswa."</option>";
+							<?php
+							$id_siswa=$b->id_siswa;
+							?>
+							
+							
+							<?php
+							foreach($ms_siswa as $s){
+								$selected='';
+								if($b->id_siswa==$s->id_siswa){ 
+									$selected = "selected";
 								}
-								?>
+								echo "<option {$selected} value='".$s->id_siswa."'>".$s->id_siswa." - ".$s->nama_siswa."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>
@@ -67,12 +91,20 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">Kode Mata Pelajaran</label>
 						<div class="col-sm-8">
 							<select name="id_mapel" class="form-control">
-								<option value="<?php echo $b->id_mapel;?>" selected="selected"><?php echo $b->id_mapel;?></option>
-								<?php
-								foreach($ms_mapel as $m){
-								echo "<option value='".$m->id_mapel."'>".$m->id_mapel." - ".$m->nama_mapel."</option>";
+							<?php
+							$id_mapel=$b->id_mapel;
+							?>
+							
+							
+							<?php
+							foreach($ms_mapel as $m){
+								$selected='';
+								if($b->id_mapel==$m->id_mapel){ 
+									$selected = "selected";
 								}
-								?>
+								echo "<option {$selected} value='".$m->id_mapel."'>".$m->id_mapel." - ".$m->nama_mapel."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>

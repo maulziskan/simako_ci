@@ -37,12 +37,20 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Orang Tua/Wali</label>
 						<div class="col-sm-8">
 							<select name="id_walimurid" class="form-control">
-							<option value="<?php echo $s->id_walimurid;?>" selected="selected"><?php echo $s->id_walimurid;?></option>
-								<?php
-								foreach($ms_walimurid as $w){
-								echo "<option value='".$w->id_walimurid."'>".$w->id_walimurid." - ".$w->nama_walimurid."</option>";
+							<?php
+							$id_walimurid=$s->id_walimurid;
+							?>
+							
+							
+							<?php
+							foreach($ms_walimurid as $w){
+								$selected='';
+								if($s->id_walimurid==$w->id_walimurid){ 
+									$selected = "selected";
 								}
-								?>
+								echo "<option {$selected} value='".$w->id_walimurid."'>".$w->id_walimurid." - ".$w->nama_walimurid."</option>";
+							}
+							?>
 							
 						</select>
 						</div>
@@ -51,12 +59,20 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Sekolah</label>
 						<div class="col-sm-8">
 							<select name="id_sekolah" class="form-control">
-							<option value="<?php echo $s->id_sekolah;?>" selected="selected"><?php echo $s->id_sekolah;?></option>
-								<?php
-								foreach($ms_sekolah as $b){
-								echo "<option value='".$b->id_sekolah."'>".$b->id_sekolah." - ".$b->nama_sekolah."</option>";
+							<?php
+							$id_sekolah=$s->id_sekolah;
+							?>
+							
+							
+							<?php
+							foreach($ms_sekolah as $sc){
+								$selected='';
+								if($s->id_sekolah==$sc->id_sekolah){ 
+									$selected = "selected";
 								}
-								?>
+								echo "<option {$selected} value='".$sc->id_sekolah."'>".$sc->id_sekolah." - ".$sc->nama_sekolah."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>
@@ -64,12 +80,20 @@ include 'header.php';
 						<label class="control-label col-sm-4" style="text-align: left;">ID Kelas</label>
 						<div class="col-sm-8">
 							<select name="id_kelas" class="form-control">
-							<option value="<?php echo $s->id_kelas;?>" selected="selected"><?php echo $s->id_kelas;?></option>
-								<?php
-								foreach($ms_kelas as $k){
-								echo "<option value='".$k->id_kelas."'>".$k->id_kelas." - ".$k->nama_kelas."</option>";
+							<?php
+							$id_kelas=$s->id_kelas;
+							?>
+							
+							
+							<?php
+							foreach($ms_kelas as $k){
+								$selected='';
+								if($s->id_kelas==$k->id_kelas){ 
+									$selected = "selected";
 								}
-								?>
+								echo "<option {$selected} value='".$k->id_kelas."'>".$k->id_kelas." - ".$k->nama_kelas."</option>";
+							}
+							?>
 							</select>
 						</div>
 					</div>

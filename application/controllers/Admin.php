@@ -103,7 +103,7 @@ public function belajarharian_edit($id_belajarharian){
 	$data['belajarharian'] = $this->Model_belajarharian->edit_belajarharian($where,'belajarharian')->result();
 	$data['ms_siswa'] = $this->Model_siswa->ambil_siswaid()->result();
 	$data['ms_mapel'] = $this->Model_mapel->ambil_mapelid()->result();
-	$data['ms_sekolah'] = $this->Model_sekolah->ambil_sekolahid()->result();
+	$data['ms_guru'] = $this->Model_guru->ambil_guruid()->result();
 	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
 	$this->load->view('admin/belajarharian_edit',$data);
 }
@@ -768,6 +768,66 @@ public function sekolah_hapus($id_sekolah){
 	$this->Model_sekolah->hapus_sekolah($where,'ms_sekolah');
 	redirect('Admin/sekolah_ms');
 }
+
+// Batas -------------------------------------
+
+public function user_ms(){
+	$data['data_user']= $this->Model_user->ambil_user();
+	$this->load->view('admin/user_ms',$data);
+}
+
+public function user_input(){
+	$this->load->view('admin/user_input');
+}
+
+public function user_aksi(){
+	$id_user=$this->input->post('id_user');
+	$nama_user=$this->input->post('nama_user');
+	$password=$this->input->post('password');
+	$posisi=$this->input->post('posisi');
+
+	$data = array('id_user' => $id_user,
+					'nama_user' => $nama_user,
+					'password' => $password,
+					'posisi' => $posisi
+		);
+	$this->Model_user->simpan_user('ms_userheader',$data);
+	redirect('Admin/user_ms');
+}
+
+public function user_edit($id_user){
+	$where = array('id_user' => $id_user);
+	$data['ms_user'] = $this->Model_user->edit_user($where,'ms_userheader')->result();
+	$this->load->view('admin/user_edit',$data);
+}
+
+public function user_update(){
+	$id_user = $this->input->post('id_user');
+	$nama_user = $this->input->post('nama_user');
+	$password = $this->input->post('password');
+	$posisi=$this->input->post('posisi');
+
+	$data = array(
+		'nama_user' => $nama_user,
+		'password' => $password,
+		'posisi' => $posisi
+	);
+
+	$where = array(
+		'id_user' => $id_user
+	);
+
+	$this->Model_user->update_user($where,$data,'ms_user');
+	redirect('Admin/user_ms');
+}
+
+public function user_hapus($id_user){
+	$where = array('id_user' => $id_user);
+	$this->Model_user->hapus_user($where,'ms_user');
+	redirect('Admin/user_ms');
+}
+
+
 // Batas -------------------------------------
 
 	public function logout() {
