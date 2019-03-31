@@ -25,6 +25,12 @@ class Auth extends CI_Controller {
 			}
 			elseif ($this->session->userdata('posisi')=='user') {
 				redirect('User');
+			}
+			elseif ($this->session->userdata('posisi')=='guru') {
+				redirect('Guru');
+			}
+			elseif ($this->session->userdata('posisi')=='walimurid') {
+				redirect('Walimurid');
 			}		
 		}
 		else {

@@ -25,15 +25,16 @@ include 'header.php';
 				$no=1;
 
 				foreach ($data_user->result() as $key => $value) {
+										
 					?>
 					<tr>
 						<td><?php echo $no++; ?></td>
-						<td><?php echo $value->id_user; ?></td>
+						<td><?php echo $value->kd_user; ?></td>
 						<td><?php echo $value->nama_user; ?></td>
 						<td><?php echo $value->posisi; ?></td>
 						<td>
-							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->id_user; ?>" href="<?= base_url('Admin/user_edit/'.$value->id_user); ?>"><span class="glyphicon glyphicon-edit"></span></a>
-							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->id_user; ?>" href="<?= base_url('Admin/user_hapus/'.$value->id_user); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+							<a class="btn btn-sm btn-info" data-toggle="tooltip" title="Edit" value="<?php echo $value->kd_user; ?>" href="<?= base_url('Admin/user_edit/'.$value->kd_user); ?>"><span class="glyphicon glyphicon-edit"></span></a>
+							<a class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete" value="<?php echo $value->kd_user; ?>" href="<?= base_url('Admin/user_hapus/'.$value->kd_user); ?>"><span class="glyphicon glyphicon-trash"></span></a>
 						</td>
 					</tr>
 					<?php

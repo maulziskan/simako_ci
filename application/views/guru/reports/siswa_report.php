@@ -14,7 +14,7 @@
 <div class="container-fluid">
 	<div class="panel">
 	<div class="panel-heading">
-		<h4>Data Kegiatan Belajar Mengajar</h4>
+		<h4>Data Master Siswa</h4>
 	</div>
 
 	<div class="panel-body">
@@ -23,32 +23,26 @@
 		<table class="table table-bordered table-striped">
 			<tr>
 				<th width="1%">No.</th>
-				<th>No. Belajar Harian</th>
-        		<th>ID Guru</th>
 				<th>No. Induk Siswa</th>
-				<th>Kelas</th>
-				<th>Kode Mata Pelajaran</th>
-				<th>Tanggal KBM</th>
-				<th>Jam KBM</th>
-				<th>Pencapaian Siswa</th>
+				<th>Nama Lengkap Siswa</th>
+				<th>ID Orang Tua/Wali</th>
+				<th>Kode Kelas Siswa</th>
+				<th>Foto Siswa</th>
 				
 			</tr>
 
 			<?php
 			$no=1;
-			foreach ($data_belajarharian->result() as $key => $value) {
+			foreach ($data_siswa->result() as $key => $value) {
 
 				?>
 				<tr>
 					<td><?php echo $no++; ?></td>
-					<td><?php echo $value->id_belajarharian; ?></td>
-					<td><?php echo $value->id_guru; ?></td>
 					<td><?php echo $value->id_siswa; ?></td>
+					<td><?php echo $value->nama_siswa; ?></td>
+					<td><?php echo $value->id_walimurid; ?></td>
 					<td><?php echo $value->id_kelas; ?></td>
-					<td><?php echo $value->id_mapel; ?></td>
-					<td><?php echo $value->tgl_belajar; ?></td>
-					<td><?php echo $value->jam_mulai; ?></td>
-					<td><?php echo $value->pencapaian_siswa; ?></td>
+					<td><?php echo "<img src='".base_url("./upload/siswa/".$value->foto_siswa)."' width='100' height='100'>";?></td>
 					
 				</tr>
 				<?php
@@ -59,11 +53,13 @@
 			</table>
 		</div>
 	</div>
+
 	<script type="text/javascript">
 			window.print();
 		</script>
 
 </body>
 </html>
+
 	
 				

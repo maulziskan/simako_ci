@@ -14,7 +14,7 @@ include 'header.php';
 				<form method="post" action="<?php echo base_url("Admin/user_aksi");?>">
 					<div class="form-group">
 						<label>User ID</label>
-						<input type="text" class="form-control" maxlength="4" name="id_user" placeholder="Masukkan Kode User" required>
+						<input type="text" class="form-control" maxlength="4" name="kd_user" placeholder="Masukkan Kode User" required>
 					</div>
 					<div class="form-group">
 						<label>Nama User</label>
@@ -26,7 +26,12 @@ include 'header.php';
                     </div>
                     <div class="form-group">
 						<label>Posisi</label>
-						<input type="text" class="form-control" name="posisi" placeholder="Masukkan Posisi">
+						<select name="posisi" class="form-control">
+								<option value="admin">Administrator</option>
+								<option value="user">User</option>
+								<option value="guru">Guru</option>
+								<option value="walimurid">Orang Tua/Wali</option>
+						</select>
 					</div>
 					
 					<br/>

@@ -2,8 +2,8 @@
 
 	class Model_belajarharian extends CI_Model {
 
-		public function autoid_belajarharian(){
-			$sql="select max(id_belajarharian) as noakhir from belajarharian where month(tgl_belajar)=month(curdate()) and year(tgl_belajar)=year(curdate())";
+		public function belajarharian_cetakid(){
+			$sql="select a.*,b.nama_guru,c.nama_siswa,d.nama_mapel,e.nama_kelas from belajarharian as a join ms_guru as b on a.id_guru=b.id_guru join ms_siswa as c on a.id_siswa=c.id_siswa join ms_mapel as d on a.id_mapel=d.id_mapel join ms_kelas as e on a.id_kelas=e.id_kelas ";
 			$this->db->query($sql);
 		}
 

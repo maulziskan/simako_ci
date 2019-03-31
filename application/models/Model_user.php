@@ -13,7 +13,7 @@
 		}
 
 		public function ambil_userid(){
-			$this->db->select('id_user , nama_user');
+			$this->db->select('kd_user , nama_user');
 			return $this->db->get('ms_userheader');
 		}
 
