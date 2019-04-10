@@ -29,9 +29,13 @@ class Admin extends CI_Controller {
 // Batas ------------------------------------------------
 
 public function belajarharian_reportid($id_belajarharian){
-	
 	$data['belajarharian_cetak']=$this->belajarharian_cetak($id_belajarharian);
 	$this->load->view('admin/reports/belajarharian_reportid',$data);
+}
+
+public function belajarharian_reportidsiswa($id_siswa,$tgl_belajar){
+	$data['belajarharian_cetaksiswa']=$this->belajarharian_cetaksiswa($id_siswa,$tgl_belajar);
+	$this->load->view('admin/belajarharian_reportidsiswa',$data);
 }
 
 
@@ -50,6 +54,7 @@ public function belajarharian_input(){
 	$data['ms_siswa'] = $this->Model_siswa->ambil_siswaid()->result();
 	$data['ms_kelas'] = $this->Model_kelas->ambil_kelasid()->result();
 	$data['ms_mapel'] = $this->Model_mapel->ambil_mapelid()->result();
+	$data['ms_nilai'] = $this->Model_nilai->ambil_nilaiid()->result();
 	$data['id_belajaroto'] = $this->id_belajaroto();
 	$this->load->view('admin/belajarharian_input',$data);	
 
@@ -67,10 +72,15 @@ private function id_belajaroto(){
 }
 
 private function belajarharian_cetak($id_belajarharian){
-//	$where=array(id_belajarharian => $id_belajarharian);
 	$sql="select a.*,b.nama_guru,c.nama_siswa,d.nama_mapel,e.nama_kelas from belajarharian as a join ms_guru as b on a.id_guru=b.id_guru join ms_siswa as c on a.id_siswa=c.id_siswa join ms_mapel as d on a.id_mapel=d.id_mapel join ms_kelas as e on a.id_kelas=e.id_kelas where a.id_belajarharian='{$id_belajarharian}' ";
 	$b=$this->db->query($sql)->row();
 	return $b;
+}
+
+private function belajarharian_cetaksiswa($id_siswa,$tgl_belajar){
+	$query="select a.*,b.nama_guru,c.nama_siswa,d.nama_mapel,e.nama_kelas from belajarharian as a join ms_guru as b on a.id_guru=b.id_guru join ms_siswa as c on a.id_siswa=c.id_siswa join ms_mapel as d on a.id_mapel=d.id_mapel join ms_kelas as e on a.id_kelas=e.id_kelas where a.id_siswa='{$id_siswa}' and a.tgl_belajar='{$tgl_belajar}' ";
+	$c=$this->db->query($query)->row();
+	return $c;
 }
 
 
@@ -557,6 +567,10 @@ public function karyawan_aksi(){
 	$status_kerja=$this->input->post('status_kerja');
 	$jabatan=$this->input->post('jabatan');
 	$agama=$this->input->post('agama');
+	$jenis_kelamin=$this->input->post('jenis_kelamin');
+	$tempat_lahir=$this->input->post('tempat_lahir');
+	$tgl_lahir=$this->input->post('tgl_lahir');
+	$pendidikan_terakhir=$this->input->post('pendidikan_terakhir');
 
 	$data = array(
 		'id_karyawan' => $id_karyawan,
@@ -568,7 +582,11 @@ public function karyawan_aksi(){
 		'status_kerja' => $status_kerja,
 		'jabatan' => $jabatan,
 		'foto_karyawan' => $foto_karyawan['file']['file_name'],
-		'agama' => $agama
+		'agama' => $agama,
+		'jenis_kelamin'=>$jenis_kelamin,
+		'tempat_lahir'=>$tempat_lahir,
+		'tgl_lahir'=>$tgl_lahir,
+		'pendidikan_terakhir'=>$pendidikan_terakhir
 		);
 	$this->Model_karyawan->simpan_karyawan('ms_karyawan',$data);
 	redirect('Admin/karyawan_ms');
@@ -591,6 +609,11 @@ public function karyawan_update(){
 	$status_kerja=$this->input->post('status_kerja');
 	$jabatan=$this->input->post('jabatan');
 	$agama=$this->input->post('agama');
+	$jenis_kelamin=$this->input->post('jenis_kelamin');
+	$tempat_lahir=$this->input->post('tempat_lahir');
+	$tgl_lahir=$this->input->post('tgl_lahir');
+	$pendidikan_terakhir=$this->input->post('pendidikan_terakhir');
+
 	if($foto_karyawan['result']=='success'){
 		//
 		$data = array(
@@ -602,7 +625,11 @@ public function karyawan_update(){
 			'status_kerja' => $status_kerja,
 			'jabatan' => $jabatan,
 			'foto_karyawan' => $foto_karyawan['file']['file_name'],
-			'agama' => $agama
+			'agama' => $agama,
+			'jenis_kelamin'=>$jenis_kelamin,
+			'tempat_lahir'=>$tempat_lahir,
+			'tgl_lahir'=>$tgl_lahir,
+			'pendidikan_terakhir'=>$pendidikan_terakhir
 		);
 	}
 	else{
@@ -614,7 +641,11 @@ public function karyawan_update(){
 			'email_karyawan' => $email_karyawan,
 			'status_kerja' => $status_kerja,
 			'jabatan' => $jabatan,
-			'agama' => $agama
+			'agama' => $agama,
+			'jenis_kelamin'=>$jenis_kelamin,
+			'tempat_lahir'=>$tempat_lahir,
+			'tgl_lahir'=>$tgl_lahir,
+			'pendidikan_terakhir'=>$pendidikan_terakhir
 		);
 	}
 
@@ -652,22 +683,16 @@ public function guru_input(){
 public function guru_aksi(){
 	$id_guru=$this->input->post('id_guru');
 	$nama_guru=$this->input->post('nama_guru');
-	$alamat_guru=$this->input->post('alamat_guru');
-	$no_telp=$this->input->post('no_telp');
-	$no_hp=$this->input->post('no_hp');
-	$email_guru=$this->input->post('email_guru');
 	$id_karyawan=$this->input->post('id_karyawan');
-	$jenjang_pendidikan=$this->input->post('jenjang_pendidikan');
+	$mapel=$this->input->post('mapel');
+	$kelas=$this->input->post('kelas');
 	
 	$data = array(
 		'id_guru' => $id_guru,
 		'nama_guru' => $nama_guru,
-		'alamat_guru' => $alamat_guru,
-		'no_telp' => $no_telp,
-		'no_hp' => $no_hp,
-		'email_guru' => $email_guru,
 		'id_karyawan' => $id_karyawan,
-		'jenjang_pendidikan' => $jenjang_pendidikan
+		'mapel' => $mapel,
+		'kelas' => $kelas
 		);
 	$this->Model_guru->simpan_guru('ms_guru',$data);
 	redirect('Admin/guru_ms');
@@ -683,21 +708,15 @@ public function guru_edit($id_guru){
 public function guru_update(){
 	$id_guru=$this->input->post('id_guru');
 	$nama_guru=$this->input->post('nama_guru');
-	$alamat_guru=$this->input->post('alamat_guru');
-	$no_telp=$this->input->post('no_telp');
-	$no_hp=$this->input->post('no_hp');
-	$email_guru=$this->input->post('email_guru');
 	$id_karyawan=$this->input->post('id_karyawan');
-	$jenjang_pendidikan=$this->input->post('jenjang_pendidikan');
+	$mapel=$this->input->post('mapel');
+	$kelas=$this->input->post('kelas');
 
 	$data = array(
 		'nama_guru' => $nama_guru,
-		'alamat_guru' => $alamat_guru,
-		'no_telp' => $no_telp,
-		'no_hp' => $no_hp,
-		'email_guru' => $email_guru,
 		'id_karyawan' => $id_karyawan,
-		'jenjang_pendidikan' => $jenjang_pendidikan
+		'mapel' => $mapel,
+		'kelas' => $kelas
 	);
 
 	$where = array(

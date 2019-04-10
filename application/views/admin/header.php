@@ -36,7 +36,7 @@ ini_set('display_errors', 1);
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="<?php echo base_url("Admin/"); ?>index">
           <img src="<?php echo base_url(); ?>images/logo.png" alt="logo" style="width: 25px;height: 25px;border: 0px;">
         </a>
       </div>
@@ -83,7 +83,7 @@ ini_set('display_errors', 1);
                   <li><a target="_blank" href="<?php echo base_url("Admin/guru_report"); ?>">Laporan Data Guru</a></li>
                   <li><a target="_blank" href="<?php echo base_url("Admin/sekolah_report"); ?>">Laporan Data Sekolah</a></li>
                   <li><a target="_blank" href="<?php echo base_url("Admin/belajarharian_report"); ?>">Laporan Kegiatan Belajar Harian</a></li>
-                  <li><a target="_blank" href="<?php echo base_url("Admin/belajarharian_reportid"); ?>">Laporan Kegiatan Belajar Harian Per Siswa</a></li>
+                  <li><a target="_blank" href="<?php echo base_url("Admin/belajarharian_reportidsiswa"); ?>">Laporan Kegiatan Belajar Harian Per Siswa</a></li>
               
               </ul>
           </li>

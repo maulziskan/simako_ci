@@ -23,24 +23,8 @@ include 'header.php';
 		    		<div class="form-group">
 		    			<label>Nama Guru</label>
 		    			<input type="text" class="form-control" name="nama_guru" value="<?php echo $d->nama_guru; ?> ">
-		    		</div>
-		    		<div class="form-group">
-		    			<label>Alamat Guru</label>
-		    			<input type="text" class="form-control" name="alamat_guru" value="<?php echo $d->alamat_guru; ?> ">
-		    		</div>
-		    		<div class="form-group">
-		    			<label>No. Telepon Rumah</label>
-		    			<input type="text" name='no_telp' class="form-control" value="<?php echo $d->no_telp; ?>">
-		    		</div>
-		    		<div class="form-group">
-		    			<label>No. Handphone</label>
-		    			<input type="text" name='no_hp' class="form-control" value="<?php echo $d->no_hp; ?>">
-		    		</div>
-		    		<div class="form-group">
-		    			<label>Alamat Email</label>
-		    			<input type="email" class="form-control" name="email_guru" value="<?php echo $d->email_guru; ?> ">
-		    		</div>
-		    		<div class="form-group">
+					</div>
+					<div class="form-group">
 						<label>Kode Karyawan</label>
 						<select id="id_karyawan" name="id_karyawan" class="form-control">
 							<?php
@@ -60,9 +44,16 @@ include 'header.php';
 						</select>
 		    		</div>
 		    		<div class="form-group">
-		    			<label>Pendidikan Terakhir</label>
-		    			<input type="text" class="form-control" name="jenjang_pendidikan" value="<?php echo $d->jenjang_pendidikan; ?> ">
+		    			<label>Mata Pelajaran</label>
+		    			<input type="text" class="form-control" name="mapel" value="<?php echo $d->mapel; ?> ">
 		    		</div>
+		    		<div class="form-group">
+		    			<label>Kelas</label>
+		    			<input type="text" name='kelas' class="form-control" value="<?php echo $d->kelas; ?>">
+		    		</div>
+		    		
+		    		
+		    		
 		    		<br/>
 		    		<input type="submit" class="btn btn-primary" value="Simpan">
 		    	</form>

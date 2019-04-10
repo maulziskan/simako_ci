@@ -91,25 +91,66 @@ include 'header.php';
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Ketertarikan</label>
 						<div class="col-sm-8">
-							<input type="input" class="form-control" name="ketertarikan" required>
+						<select name="ketertarikan" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+						</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Keaktifan</label>
 						<div class="col-sm-8">
-							<input type="input" class="form-control" name="keaktifan" required>
+						<select name="keaktifan" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+						</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Kedisiplinan</label>
 						<div class="col-sm-8">
-							<input type="input" class="form-control" name="kedisiplinan" required>
+							<select name="kedisiplinan" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Ketekunan</label>
 						<div class="col-sm-8">
-							<input type="input" class="form-control" name="ketekunan" required>
+							<select name="ketekunan" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-4" style="text-align: left;">Konsentrasi</label>
+						<div class="col-sm-8">
+							<select name="konsentrasi" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -119,40 +160,70 @@ include 'header.php';
 		<div class="col-sm-6">
 			<div class="panel">
 				<div class="panel-body">
-					<div class="form-group">
-						<label class="control-label col-sm-4" style="text-align: left;">Konsentrasi</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" name="konsentrasi" required>
-						</div>
-					</div>
+					
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Antusiasme</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="antusiasme" required>
+							<select name="antusiasme" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Kesopanan</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="kesopanan" required>
+							<select name="kesopanan" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Motivasi</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="motivasi" required>
+							<select name="motivasi" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Kemandirian</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="kemandirian" required>
+							<select name="kemandirian" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Happiness</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="happiness" required>
+							<select name="happiness" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
@@ -176,7 +247,20 @@ include 'header.php';
 					<div class="form-group">
 						<label class="control-label col-sm-4" style="text-align: left;">Nilai Tes Formatif</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" name="nilai_tesformatif" required>
+							<select name="nilai_tesformatif" class="form-control">
+							<option value="" selected="selected">-</option>
+							<?php
+							foreach($ms_nilai as $n){
+								echo "<option value='".$n->id_nilai."'>".$n->id_nilai." - ".$n->nama_nilai."</option>";
+							}
+							?>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-4" style="text-align: left;">Keterangan Tes Formatif</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" name="keterangan_tesformatif" required>
 						</div>
 					</div>
 					<input type="submit" class="btn btn-primary" value="simpan">

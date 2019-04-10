@@ -24,8 +24,8 @@
 					<th width="1%">No.</th>
 					<th>Kode Guru</th>
 					<th>Nama Guru</th>
-					<th>Alamat</th>
-					<th>No.Handphone</th>
+					<th>Mata Pelajaran</th>
+					<th>Kelas</th>
 					
 				</tr>
 
@@ -38,8 +38,8 @@
 						<td><?php echo $no++; ?></td>
 						<td><?php echo $value->id_guru; ?></td>
 						<td><?php echo $value->nama_guru; ?></td>
-						<td><?php echo $value->alamat_guru; ?></td>
-						<td><?php echo $value->no_hp; ?></td>
+						<td><?php echo $value->mapel; ?></td>
+						<td><?php echo $value->kelas; ?></td>
 						
 					</tr>
 					<?php

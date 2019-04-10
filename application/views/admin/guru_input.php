@@ -21,22 +21,6 @@ include 'header.php';
 						<input type="text" class="form-control" name="nama_guru" placeholder="Masukkan Nama Guru">
 					</div>
 					<div class="form-group">
-						<label>Alamat</label>
-						<input type="text" class="form-control" name="alamat_guru" placeholder="Masukkan Alamat">
-					</div>
-					<div class="form-group">
-						<label>No. Telepon</label>
-						<input type="text" min="0" class="form-control" name="no_telp" placeholder="Masukkan No. Telepon">
-					</div>
-					<div class="form-group">
-						<label>No. Handphone</label>
-						<input type="text" min="0" class="form-control" name="no_hp" placeholder="Masukkan No. Handphone">
-					</div>
-					<div class="form-group">
-						<label>Alamat email</label>
-						<input type="email" class="form-control" name="email_guru" placeholder="Masukkan Alamat email">
-					</div>
-					<div class="form-group">
 						<label>Kode Karyawan</label>
 						<select name="id_karyawan" class="form-control">
 							<option value="" selected="selected">-</option>
@@ -49,9 +33,14 @@ include 'header.php';
 						
 		    		</div>
 					<div class="form-group">
-						<label>Pendidikan Terakhir</label>
-						<input type="text" class="form-control" name="jenjang_pendidikan" placeholder="Masukkan Pendidikan Terakhir">
+						<label>Mata Pelajaran</label>
+						<input type="text" class="form-control" name="mapel" placeholder="Masukkan Mata Pelajaran">
 					</div>
+					<div class="form-group">
+						<label>Kelas</label>
+						<input type="text" class="form-control" name="kelas" placeholder="Masukkan Kelas">
+					</div>
+					
 					<br/>
 					
 					<input type="submit" class="btn btn-primary" value="Simpan">

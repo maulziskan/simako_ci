@@ -65,7 +65,30 @@ include 'header.php';
   								<option <?php if($agama=="Budha") echo 'selected';?> value="Budha">Budha</option>
   								<option <?php if($agama=="Kong Hu chu") echo 'selected';?> value="Kong Hu chu">Kong Hu Chu</option>
 						</select>
-		    			</div>
+						</div>
+						
+				<div class="form-group">
+						<label>Jenis Kelamin</label>
+						<select id="jenis_kelamin" name="jenis_kelamin" class="form-control">
+							<?php
+							$jk=$k->jenis_kelamin;
+							?>
+								<option <?php if($jk=="L") echo 'selected';?> value="L">Pria</option>
+  								<option <?php if($jk=="P") echo 'selected';?> value="P">Wanita</option>
+  						</select>
+				</div>
+				<div class="form-group">
+		    			<label>Tempat Lahir</label>
+		    			<input type="text" class="form-control" name="tempat_lahir" value="<?php echo $k->tempat_lahir; ?> ">
+					</div>
+				<div class="form-group">
+		    			<label>Tanggal Lahir</label>
+		    			<input type="date" class="form-control" name="tgl_lahir" value="<?php echo $k->tgl_lahir; ?> ">
+					</div>
+				<div class="form-group">
+		    			<label>Pendidikan Terakhir</label>
+		    			<input type="text" class="form-control" name="pendidikan_terakhir" value="<?php echo $k->pendidikan_terakhir; ?> ">
+		    		</div>
 		    		<br/>
 		    		<input type="submit" class="btn btn-primary" value="Simpan">
 		    	</form>

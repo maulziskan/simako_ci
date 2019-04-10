@@ -14,7 +14,7 @@ include 'header.php';
 				<form method="post" action="<?php echo base_url("Admin/karyawan_aksi");?>" enctype='multipart/form-data' >
 					<div class="form-group">
 						<label>Kode Karyawan</label>
-						<input type="text" class="form-control" maxlength="4" name="id_karyawan" placeholder="Masukkan Kode Karyawan" required>
+						<input type="text" class="form-control" maxlength="12" name="id_karyawan" placeholder="Masukkan Kode Karyawan" required>
 					</div>
 					<div class="form-group">
 						<label>Nama Karyawan</label>
@@ -62,6 +62,25 @@ include 'header.php';
   								<option value="Budha">Budha</option>
   								<option value="Kong Hu chu">Kong Hu Chu</option>
 						</select>
+					</div>
+					<div class="form-group">
+						<label>Jenis Kelamin</label>
+						<select name="jenis_kelamin" class="form-control">
+								<option value="L">Pria</option>
+  								<option value="P">Wanita</option>
+  						</select>
+					</div>
+					<div class="form-group">
+						<label>Tempat Lahir</label>
+						<input type="text" class="form-control" name="tempat_lahir" placeholder="Masukkan Nama Kota">
+					</div>
+					<div class="form-group">
+						<label>Tanggal Lahir</label>
+						<input type="date" class="form-control" name="tgl_lahir">
+					</div>
+					<div class="form-group">
+						<label>Pendidikan Terakhir</label>
+						<input type="text" class="form-control" name="pendidikan_terakhir" placeholder="Masukkan Pendidikan Terakhir">
 					</div>
 					<br/>
 
